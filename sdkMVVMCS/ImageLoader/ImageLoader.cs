@@ -124,7 +124,7 @@ namespace ImageLoader
         }
         void OnImageFailed(object sender, ExceptionRoutedEventArgs e)
         {
-            this.IsLoading = false;
+            this.IsLoading = false;    
             this.IsFailed = true;
         }
         void OnImageOpened(object sender, RoutedEventArgs e)
