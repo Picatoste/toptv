@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="ImageLoader.ImageLoader"  
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"  
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"  
+             xmlns:local="using:App30"  
+             xmlns:cmn="clr-namespace:Common"  
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"  
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"  
+             mc:Ignorable="d"  
+             d:DesignHeight="300"  
+             d:DesignWidth="400"  
+             x:Name="parent">
+    <UserControl.Resources>
+        <!-- Put this here but I'd put it in App.xaml really -->
+        <cmn:BooleanToVisibilityConverter x:Name="converter" />
+    </UserControl.Resources>
+    <Grid>
+        <Image x:Name="imgDisplay" Source="{Binding ElementName=parent,Path=Source}"  
+           ImageFailed="OnImageFailed"  
+           ImageOpened="OnImageOpened" Stretch="UniformToFill"/>
+        <ContentControl  
+      Visibility="{Binding ElementName=parent,Path=IsLoading,Converter={StaticResource converter}}"  
+      Content="{Binding ElementName=parent,Path=LoadingContent}"  
+      VerticalContentAlignment="Stretch"  
+      HorizontalContentAlignment="Stretch">
+        </ContentControl>
+        <ContentControl Visibility="{Binding ElementName=parent,Path=IsFailed,Converter={StaticResource converter}}"  
+                    Content="{Binding ElementName=parent,Path=FailedContent}"  
+                    VerticalContentAlignment="Stretch"  
+                    HorizontalContentAlignment="Stretch">
+        </ContentControl>
+    </Grid>
+</UserControl>  

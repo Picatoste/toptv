@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="SplashLoading.SplashScreenControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="700" d:DesignWidth="480" Background="#FFFFCC00">
+
+    <Grid x:Name="LayoutRoot" Background="#FFFFCC00" Width="480" Height="800">
+        <ProgressBar HorizontalAlignment="Left" Margin="50,713,0,68" Name="progressBar1" Width="383"  />
+        <Image Height="700" HorizontalAlignment="Left" Margin="0,0,0,0" Name="image1" Stretch="Fill" VerticalAlignment="Top" Width="480"  Source="SplashScreenLoading.png" />
+        <TextBlock HorizontalAlignment="Left" Margin="184,732,0,38" Name="textBlock1" Text="Cargando..." Width="111" Foreground="Black" FontSize="22" />
+    </Grid>
+</UserControl>
