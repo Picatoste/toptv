@@ -34,7 +34,7 @@ namespace sdkMVVMCS.ViewModelNS
         public ObservableCollection<FeedItemsModel> Feeds { get; set; }
         public EventHandler<FeedRetrievedEventArgs> grabber_FeedRetrieved;
         public EventHandler<FeedErrorEventArgs> grabber_FeedError;
-
+        //adsd
         public Boolean GetFeeds()
         {
             Boolean HasStorageFeed = IsolatedStorageSettings.ApplicationSettings.Where(s => s.Key.Contains("SaveFeeds")).Count() > 0;
