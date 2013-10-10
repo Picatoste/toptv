@@ -382,33 +382,33 @@ a:hover {
 	display: inline-block;
 }
 
-.linkbox github
+.linkbox.github
 {
 	background:transparent url(../img/github_128.png) no-repeat top left;
 }
 
 
-.linkbox facebook
+.linkbox.facebook
 {
 	background:transparent url(../img/facebook_128.png) no-repeat top left;
 }
 
-.linkbox email
+.linkbox.email
 {
 	background:transparent url(../img/email_128.png) no-repeat top left;
 }
 
-.linkbox googleplus
+.linkbox.googleplus
 {
 	background:transparent url(../img/googleplus_128.png) no-repeat top left;
 }
 
-.linkbox twitter
+.linkbox.twitter
 { 
 	background:transparent url(../img/twitter_128.png) no-repeat top left;
 }
 
-.linkbox linkedin
+.linkbox.linkedin
 {
 	background:transparent url(../img/linkedin_128.png) no-repeat top left;
 }
