@@ -379,7 +379,44 @@ a:hover {
 	height: 80px;
 	background-size: 100%;
 	cursor:pointer;
-	border-radius:10px 10px 0px 0px;
+	float: right;
+	display: inline-block;
+}
+
+
+.linkbox-facebook
+{
+	opacity: 1; 
+	background:transparent url(../img/facebook_128.png) no-repeat top left;
+	width: 80px;
+	height: 80px;
+	background-size: 100%;
+	cursor:pointer;
+	float: right;
+	display: inline-block;
+}
+
+
+.linkbox-twitter
+{
+	opacity: 1; 
+	background:transparent url(../img/twitter_128.png) no-repeat top left;
+	width: 80px;
+	height: 80px;
+	background-size: 100%;
+	cursor:pointer;
+	float: right;
+	display: inline-block;
+}
+
+.linkbox-linkedin
+{
+	opacity: 1; 
+	background:transparent url(../img/linkedin_128.png) no-repeat top left;
+	width: 80px;
+	height: 80px;
+	background-size: 100%;
+	cursor:pointer;
 	float: right;
 	display: inline-block;
 }
