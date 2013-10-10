@@ -396,6 +396,30 @@ a:hover {
 	display: inline-block;
 }
 
+.linkbox-email
+{
+	opacity: 1; 
+	background:transparent url(../img/email_128.png) no-repeat top left;
+	width: 80px;
+	height: 80px;
+	background-size: 100%;
+	cursor:pointer;
+	float: right;
+	display: inline-block;
+}
+
+.linkbox-googleplus
+{
+	opacity: 1; 
+	background:transparent url(../img/googleplus_128.png) no-repeat top left;
+	width: 80px;
+	height: 80px;
+	background-size: 100%;
+	cursor:pointer;
+	float: right;
+	display: inline-block;
+}
+
 
 .linkbox-twitter
 {
