@@ -7,7 +7,7 @@
     license agreement between you and Microsoft.
   
     To see all Code Samples for Windows Phone, visit http://go.microsoft.com/fwlink/?LinkID=219604 
-  
+  test
 */
 using System.ComponentModel;
 
