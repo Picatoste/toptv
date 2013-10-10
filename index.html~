@@ -9,15 +9,16 @@
 		<title>SOLUCIONES.NET por DBR</title>
 
 		<meta property="og:title" content="SOLUCIONES.NET por DBR" />
-		<meta property="og:description" content="Soluciones sobre el mundo de la programación.(.NET, Android, ASP.NET, Javascript, SQL, otros). Por David Benito." />
+		<meta property="og:description" content="Soluciones sobre el mundo de la programación.(.NET, Android, ASP.NET, Javascript, SQL, 		otros). Por David Benito." />
 		<meta property="og:image" content="http://dl.dropboxusercontent.com/u/161530822/BlogDBR/img/robot_logo.png" />
 		
 		
-		<link rel="stylesheet" href="css/normalize.min.css"/>
-		<link rel="stylesheet" href="css/main.css"/>
+		<link rel="stylesheet" href="css/normalize.min.css">
+		<link rel="stylesheet" href="css/main.css">
 		
 		<script type="text/javascript" src="js/vendor/jquery-1.9.1.min.js"></script>
 		
+    	
 		<script type="text/javascript" src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 		<script type="text/javascript" src="syntaxhighlighter/scripts/shCore.js"></script>
 		<script type="text/javascript" src="syntaxhighlighter/scripts/shBrushJScript.js"></script>
@@ -38,14 +39,6 @@
     	
 	</head>
     <body>
-		<a id="navAdmin" style="text-decoration:none; position: absolute;" onclick="javascript:$('#popupadmin').fadeIn(2000); $('#navAdmin').fadeOut(2000);" >
-			Admin
-		</a>
-		<div id="admintoolbar" style="display:none; margin: 10px; margin-left: 50px;">
-				<a style="text-decoration:none;" href="http://horarios.renfe.com/cer/hjcer310.jsp?&nucleo=50&o=72302&d=71801&tc=DIA&td=D&df=20130530&th=1&ho=00&i=s&cp=NO&TXTInfo=">
-					<img alt="Ida y vuelta trabajo" title="Ida y vuelta trabajo" src="img/renfe_trabajo.png" width="100px" height="100px"/>
-				</a>		
-		</div>
 	    <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
 		<![endif]-->    
@@ -93,31 +86,6 @@
 					</ul>
 				</nav>
 				
-				</div>
-				<div id="popupadmin" style="display:none; position: absolute;margin-left: 55%; margin-top: 1%;" >
-					<div  id="container">
-						<h1>Acceso admin:</h1>
-						<div>
-							<ul>
-								<li>
-									<label for="pswd">Contraseña:</label>
-									<span><input id="pswd" type="password" name="pswd"></span>
-								</li>
-								<li>
-									<button type="submit" onclick="javascript:$('#admintoolbar').fadeIn(2000);">Mostrar</button>
-								</li>
-							</ul>	
-						</div>			
-						<div id="pswd_info">
-							<h4>La contraseña debe tener los siguientes requerimientos:</h4>
-							<ul>
-								<li id="letter" class="invalid">Al menos <strong>una letra</strong></li>
-								<li id="capital" class="invalid">Al menos <strong>una mayuscula</strong></li>
-								<li id="number" class="invalid">Al menos <strong>un numero</strong></li>
-								<li id="length" class="invalid">Al menos <strong>8 caracteres</strong></li>
-							</ul>
-						</div>
-					</div>
 				</div>
 				<a style="text-decoration:none;" href='#/aboutme'>
 					<div class="aboutme"></div>
@@ -198,7 +166,7 @@
 		</div>
 	</div>
 	</a>
-	<div class='right' style='font-size:0.9em;'>
+	<div class='right' style='clear:both; font-size:0.9em;'>
 		by <strong><%= autor %></strong>
 	</div>
 	<div class='left article_font' style='padding-bottom: 30px;'>
@@ -207,7 +175,7 @@
 			<img  src='<%= imagen %>'></img>
 			</a>
 		</div>
-		<div style='padding:8px;'>
+		<div>
 			<%= header %>
 		</div>
 	</div>
@@ -238,11 +206,12 @@
 	<div class="clear right">			         
 		<img src="img/clock_red.png"></img>
 		<span class="fecha">
-			<%= fecha  %>
+			<%= fecha %>
 		</span>
 	</div> 
 </div>			  
-<div class="clear article_font"> 
+<div class="clear article_font">  
+	<div id="buttonLikeIt"></div>
 	<%= header %>
 </div>	
 </header>
@@ -251,6 +220,46 @@
 </section>
 <footer class='article_font' style="border-bottom:1px dotted orange; padding-bottom:10px;">
 	<%= footer %>
+	<div id="fb-root"></div>
+	<script>
+	  window.fbAsyncInit = function() {
+		// init the FB JS SDK
+		FB.init({
+		  appId      : '',                        // App ID from the app dashboard
+		  channelUrl : '', // Channel file for x-domain comms
+		  status     : true,                                 // Check Facebook Login status
+		  xfbml      : true                                  // Look for social plugins on the page
+		});
+
+		// Additional initialization code such as adding Event Listeners goes here
+		//FB.ui(
+		//  {
+		//	method: 'feed',
+		//	name: '<%= $.trim(titulo) %>',
+		//	link: '<%= $.trim(document) %>',
+		//	picture: 'http://dl.dropboxusercontent.com/u/161530822/BlogDBR/' + '<%= $.trim(imagen) %>',
+		//	caption: 'Reference Documentation',
+		//	description: '<%= $.trim(header) %>'
+		//  },
+		//  function(response) {
+		//	if (response && response.post_id) {
+		//	  alert('Post was published.');
+		//	} else {
+		//	  alert('Post was not published.');
+		//	}
+		//	}
+		//);
+	  };
+
+	  // Load the SDK asynchronously
+	  (function(d, s, id){
+		 var js, fjs = d.getElementsByTagName(s)[0];
+		 if (d.getElementById(id)) {return;}
+		 js = d.createElement(s); js.id = id;
+		 js.src = "//connect.facebook.net/en_US/all.js";
+		 fjs.parentNode.insertBefore(js, fjs);
+	   }(document, 'script', 'facebook-jssdk'));
+	</script>
 </footer>
 </article>
 </div>
@@ -259,46 +268,6 @@
 
 <script type="text/javascript">
 	$(function(){ 
-		/**** BEGIN password ****/
-					 
-			$('input[type=password]').keyup(function() {
-				// set password variable
-				var pswd = $(this).val();
-				//validate the length
-			if ( pswd.length < 8 ) {
-				$('#length').removeClass('valid').addClass('invalid');
-			} else {
-				$('#length').removeClass('invalid').addClass('valid');
-			}
-			//validate letter
-			if ( pswd.match(/[A-z]/) ) {
-				$('#letter').removeClass('invalid').addClass('valid');
-			} else {
-				$('#letter').removeClass('valid').addClass('invalid');
-			}
-
-			//validate capital letter
-			if ( pswd.match(/[A-Z]/) ) {
-				$('#capital').removeClass('invalid').addClass('valid');
-			} else {
-				$('#capital').removeClass('valid').addClass('invalid');
-			}
-
-			//validate number
-			if ( pswd.match(/\d/) ) {
-				$('#number').removeClass('invalid').addClass('valid');
-			} else {
-				$('#number').removeClass('valid').addClass('invalid');
-			}
-
-			}).focus(function() {
-				$('#pswd_info').show();
-			}).blur(function() {
-				$('#pswd_info').hide();
-			});
-
-		/**** END password ****/
-		
 		App.start();
 		
 		//ui event listeners
@@ -313,7 +282,6 @@
 			App.filterBy($('#titulo').val());
 		}
 		
-	
 		
 	});
 </script>

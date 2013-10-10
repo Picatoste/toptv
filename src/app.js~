@@ -1,0 +1,125 @@
+
+/**
+ * App 
+ */
+var App = new (Backbone.Router.extend({
+
+  routes: {
+    "solucion/:id": "show", //matches "solucion/1" y "solucion/1/"
+    "soluciones(/)": "index", //matches "soluciones" y "soluciones/"
+	"aboutme": "aboutme", //matches "aboutme"
+    "*any" : "redirect" //matches anything else *wildcard ;)
+     },
+
+  initialize: function(){
+	
+  },
+
+  start: function(){
+
+    //creamos lista de entradas sin filtrar
+    //mediante bootstrapping :)
+    this.entradasList = new EntradaList();
+    
+    //lista filtrada que se usará para generar las vistas
+    this.activeList = null;
+
+    this.filter='';
+
+    Backbone.history.start();
+  },
+
+  redirect: function()
+  {
+    //redirigimos a ruta inicial
+    this.navigate("soluciones/",true);
+  },
+	
+  aboutme: function(){
+	  
+		
+		$("#app-main").fadeOut(2000, function(x){ $("#main").attr("class", "wrapper clearfix");});
+		$("#app-aboutme").fadeIn(4000);
+			
+  },
+
+  index: function(){
+		//this.show(1);
+		this.navigate("soluciones/" + id,true);
+		$("#app-aboutme").fadeOut(2000, function(x){ $("#main").attr("class", "main wrapper clearfix");});
+		$("#app-main").fadeIn(4000);
+  },
+
+  show: function(id)
+  {
+    //creamos objetos
+    var entrada = new EntradaItem({id: id});
+    var entradaView = new EntradaFichaView({model: entrada});
+
+    //limpiamos ui
+    $('#ui').empty();
+
+    //añadimos vista ficha
+    $('#app').html(entradaView.el);
+
+    //pedimos datos al server
+    entrada.fetch({id: id});
+    
+    //initialize
+    if(!this.activeList)
+      this.activeList = new EntradaList(this.entradasList.models);
+	 
+	 this.entradasList = this.activeList
+    var entradasView = new EntradaListaView({collection: this.activeList});
+
+    //generamos vista
+    $('#ui').html(_.template($('#searchTemplate').html(),
+      //escape to prevent XSS attack
+      { filter: _.escape(this.filter), sortOrder: this.activeList.sortOrder, sortField: this.activeList.sortField }
+    ));
+    
+    $('#app-side').html(entradasView.el);
+
+    //pedimos datos al server
+    this.activeList.fetch();
+
+    //render
+    //no haria falta si cargamos del server ya que reaccionamos a los eventos :)
+    entradasView.render();
+    
+  },
+
+  //ordenar por attr field en order order
+  sortBy: function(field, order)
+  {
+    this.activeList.sortField = field;
+    this.activeList.sortOrder = order;
+    this.activeList.sort();
+  },
+
+  //filtrar entradas
+  filterBy: function(filter)
+  {
+    this.filter = filter;
+
+    //"remember" sort options
+    var field = this.activeList.sortField;
+    var order = this.activeList.sortOrder;
+
+    this.activeList = this.entradasList.search(this.filter);
+
+    //sort results
+    this.activeList.sortField = field;
+    this.activeList.sortOrder = order;
+    this.activeList.sort();
+
+    //creamos nueva vista con datos filtrados
+    var entradasView = new EntradaListaView({collection: this.activeList });
+
+    //regeneramos vista
+    entradasView.render();
+    $('#app-side').html(entradasView.el);
+
+  }
+
+}))();

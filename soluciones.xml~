@@ -1,0 +1,359 @@
+<xml>
+<solucion>
+	 <id>1</id>
+	 <titulo> 
+		Solución 1 - JQuery - función find()
+	</titulo>
+	 <autor> 
+	    David Benito Ramírez
+	</autor>
+	 <fecha>
+		20110908
+	</fecha>		 
+	<header>
+		Una herramienta muy útil para añadir efectos ópticos y navegar entre tags HTML es el framework de Javascript Jquery. Tras añadir la referencia js a tu proyecto podrás utilizar esta potente herramienta que facilita el trabajo a la hora de bregar con el "duro" javascript. Una de las funciones que he descubrido recientemiente es el metodo find().
+	</header>
+	<imagen>
+		img/jquery_solucion1.png
+	</imagen>
+	<section>
+		<![CDATA[
+			<p>
+				Link: <a href='http://api.jquery.com/find/'>http://api.jquery.com/find/</a>
+			</p>
+			<pre class="brush: js;">/** "Abstract Builder" */
+			<p>
+			   <span id="primero" />
+			   <a>
+				  <span id="segundo" />
+			   </a>
+			   <strong><span id="tercero" data-item="megusta" /></strong>
+			</p>
+			</pre>
+			<p>
+				Esta función nos devuelve todos los tags descendientes que hemos puesto como parámetro de entrada, respetando la jerarquía de forma descendiente:
+			</p>
+			<pre class="brush: js;">/** "Abstract Builder" */
+				$('p').find('span') //Nos devolvería todos los elementos 'span' contenidos en el tag 'p'. En el ejemplo los dos span ("primero" y "segundo").
+				$('p').find('a span ') //Nos devolvería todos los elementos 'span' contenidos en el tag 'a' y a su vez en el tag 'p'. En el ejemplo en el span "segundo"-.
+			</pre>
+			<p>
+			También se pueden añadir criterios de búsqueda, como por ejemplo:
+			</p>
+			<pre class="brush: js;">/** "Abstract Builder" */
+				$('p').find('span[class="megusta"]') //Nos devolvería el span "tercero".
+			</pre>
+			
+		]]>
+	</section>	 
+	<footer>
+		JQuery, a día de hoy, es framework Javascript más popular y con más adeptos en la programación web.
+	</footer>
+</solucion>
+<solucion>
+	 <id>2</id>
+	 <titulo> 
+		Solución 2 - ToHtml.com - Códigos en blogs
+	</titulo>
+	 <autor> 
+	    David Benito Ramírez
+	</autor>
+	 <fecha>
+		20110909
+	</fecha>		 
+	<header>
+		Herramienta muy útil y sencilla para dar estilos de código a los textos. Convierte texto plano de un lenguaje de programación a HTML, identandolo y simulando al formato que tendríamos en un IDE. Permite escoger entre una serie de estilos generales dependiendo el color de fondo y detecta un montón de lenguajes de programación de forma automática y manual:
+	</header>
+	<imagen>
+		img/highlighter_solucion2.jpg
+	</imagen>
+	 <section>
+		<![CDATA[
+			<p>
+				Link: <a href='http://tohtml.com/'> http://tohtml.com/ </a>
+			</p>
+			<p>
+			<img align="middle" border="0" height="156" src="img/tohmtl_screenshot.png" width="400">
+			</p>
+		]]>
+	</section>		 
+	<footer>
+		Existen muchos más resaltadores de codigo para web. Incluso existen projectos en diferente lenguajes adaptados para la integración en códido, consiguiendo una forma sólida para conseguir el efecto "codigo de IDE".
+	</footer>
+</solucion>
+<solucion>
+	 <id>3</id>
+	 <titulo> 
+		Solución 3 - Invocar función de servidor (CSharp) desde cliente (JavaScript)
+	</titulo>
+	 <autor> 
+	    David Benito Ramírez
+	</autor>
+	 <fecha>
+		20110911
+	</fecha>		 
+	<header>
+		Tenia que realizar un div pop-up de confirmación para eliminar un producto de un carrito de compra de una aplicación web .NET. El problema venía dado porqué esta función de EliminarProducto() hacía PostBack al servidor y el pop-up tenía que estar hecho en JQuery (Javascript). Ejecución en Cliente y ejecución en Servidor no son buenos compañeros.
+		Aún tengo que comprobar que sea compatible en todos los navegadores.
+	</header>
+	<imagen>
+		img/dopostback.png
+	</imagen>
+	 <section>
+		<![CDATA[
+		<p>
+		Hoy me he pelado durante 2 horas con este problema, pero al fin lo saque:
+		Hay varias soluciones, pero me centro en la que he aplicado,(sospecho que..) la más insegura.
+		</p>
+		<p>
+		La solución se hallaba en la instrucción oculta javacript que permite los PostBacks del .NET. He tenido que parar la ejecución, realizar el pop-up confirmación Jquery, y luego proseguir (si tocaba) la ejecución donde lo había dejado, en el PostBack.
+		</p>
+		<p>
+		La instrucción interna de .NET en Javascript que se debía parar era :  __doPostback('idcontrolnet', ''). 
+		Lo que no me ha convencido ha sido el cómo he obtenido el  'idcontrolnet'. Lo he sacado haciendo splits del atributo "href" del LinkButton (también se puede hacer el atributo "pathname").
+		</p>
+		<pre class="brush: js;">
+			<script type="text/javascript">
+			$().ready(function () {
+				$('#dialogContent').dialog({
+					autoOpen: false,
+					modal: true,
+					bgiframe: true,
+					title: "MySql Membership Config Tool",
+				});
+			});
+
+			function rowAction(uniqueID) {
+
+			$('#dialogContent').dialog('option', 'buttons',
+			{
+				"OK": function () {
+						//uniqueID.pathname.replace("__doPostBack('", "").replace("','')", "");
+					 __doPostBack((uniqueID.href).replace("javascript:__doPostBack('", "").replace("','')", ""), '');
+					$(this).dialog("close"); 
+					return false; 
+				},
+				"Cancel": function () { $(this).dialog("close"); }
+			});
+
+						$('#dialogContent').dialog('open');
+
+						return false;
+					}
+	 
+		</script>
+			<asp:Repeater ID = "RptItems" runat = "server" onitemdatabound="RptItems_ItemDataBound" onitemcommand="RptItems_ItemCommand">
+        <ItemTemplate>
+            <li>
+                <asp:Literal ID = "LitID" runat = "server" Visible = "false" Text = '<%# Eval("ID") %>'></asp:Literal>
+                <div class="thumb">
+                    <asp:Image ID = "ImgItem" runat = "server" Width = "52" Height = "42" />
+                </div>
+                <div class="right_col">
+                    <div class="title"><asp:Literal ID = "LitNombre" runat = "server" Text = '<%# Eval("ProductoNombre") %>'></asp:Literal></div>
+                    <div class="info">Qty: <asp:Literal ID = "LitCantidad" runat = "server" Text = '<%# Eval("Cantidad") %>'></asp:Literal> | Talla: <asp:Literal ID = "LitTalla" runat = "server" Text = '<%# Eval("TallaNombre") %>'></asp:Literal></div>
+                    <asp:LinkButton ID = "LnkEliminar" runat = "server" OnClientClick="return rowAction(this);" CssClass = "delete" CommandArgument = '<%# Eval("ID") %>' CommandName = "borrar" ><span class="icon">&nbsp;</span>Eliminar</asp:LinkButton>
+                    <div class="price"><asp:Literal ID = "LitPrecio" runat = "server" ></asp:Literal>$</div>
+                </div>
+            </li>
+        </ItemTemplate>
+    </asp:Repeater>
+		</pre>
+		<p>
+				Fuente:<a href='http://www.integratedwebsystems.com/2009/12/using-jquery-modal-dialog-confirmation-with-an-asp-net-server-control/'>http://www.integratedwebsystems.com/2009/12/using-jquery-modal-dialog-confirmation-with-an-asp-net-server-control/</a>
+			</p>
+		]]>
+	</section>	 
+	<footer>
+	</footer>
+</solucion>
+<solucion>
+	 <id>11</id>
+	 <titulo> 
+		Solución 11 - Patron de diseño Strategy
+	</titulo>
+	 <autor> 
+	    David Benito Ramírez
+	</autor>
+	 <fecha>
+		20130321
+	</fecha>		 
+	<header>
+	  		Lo patrones de diseño son la evolución natural y sofisticada de la programación orientada a objeto (OO), son técnicas para aprovechar al máximo el potencial de la OO. Soluciones optimas que en caso de usarlas de forma adecuada darán un valor añadido a nuestros algoritmos  facilitando en el futuro las tareas mantenimiento y extensión de la misma.
+		
+	  	Empezaremos con el patrón de diseño Strategy.
+	  
+	  </header>
+	<imagen>
+		img/strategy.jpg
+	</imagen>
+	 <section>
+		<![CDATA[
+<p>
+ <a href="http://es.wikipedia.org/wiki/Patr%C3%B3n_de_dise%C3%B1o">Definición de wikipedia:</a>
+ El patrón <strong>Estrategia</strong> (Strategy) es un <a href="http://es.wikipedia.org/wiki/Patr%C3%B3n_de_dise%C3%B1o">patrón de diseño</a> para el desarrollo de software. Se clasifica como patrón de comportamiento porque determina como se debe realizar el intercambio de mensajes entre diferentes objetos para resolver una tarea. El patrón estrategia permite mantener un conjunto de algoritmos de entre los cuales el objeto cliente puede elegir aquel que le conviene e intercambiarlo dinámicamente según sus necesidades.  
+</p>
+<p>
+Dada una clase llamada <strong>Strategy</strong> tenemos dos clases hijas que tienen un método <strong>strategicMethod()</strong> 
+cada una con diferentes implementaciones, caso claro de Polimorfismo. Después desde la clase <strong>Context</strong> podremos escoger en <strong>setStrategy()</strong> que clase hija
+ y implementacion nos interesa más. Al instanciar en Context la clase hija que queramos, la <strong>ConcreteStrategy</strong> escogida,
+  dispondremos de sus funcionalidades. También cabe destacar la posibilidad de cambiar cuando queramos de estrategia
+   instanciando en Context otra <strong>ConcreteSrategy</strong>.
+</p>
+<p>
+<img src="img/Strategy_Pattern.jpg"></img>
+</p>
+<p>
+Ejemplo:
+</p>
+<pre class="brush: java;">
+public class CreadorDibujos {
+    private EstrategiaDibujo _estrategia;
+    private float[] _x,_y;
+ 
+    public CreadorDibujos() {
+        // Establecer estrategia por defecto.
+    }
+ 
+    public void establecerDibujoBarras() {
+        _estrategia = new EstrategiaDibujoConcreta1();
+    }
+ 
+    public void establecerDibujoLineas() {
+        _estrategia = new EstrategiaDibujoConcreta2();
+    }
+ 
+    ..............
+ 
+    public void dibuja() {
+        _estrategia.dibujar(_x,_y);
+    }
+}
+</pre>
+<p>
+La clase <strong>Context</strong> seria CreadorDibujos, y dependiendo si escogemos Barras o Lineas, la implementación del 
+método <strong>dibuja()</strong> cambiará. Se podría por ejemplo añadir nuevas estrategias como Círculos  Cuadrados, Rombos, etc. y de manera rápida y eficiente 
+con pocos cambios en el sistema creado realizar cambios consistentes.
+</p>
+<pre class="brush: java;">
+public abstract class EstrategiaDibujo extends JFrame {
+    private float[] _x,_y;
+    private Color _c;
+    private int _ancho,_alto;
+ 
+    public EstrategiaDibujo() {
+    }
+ 
+    public abstract void dibujar(float[] px, float[] py);
+}
+
+
+
+public class EstrategiaDibujoConcreta1 extends EstrategiaDibujo{
+        //...
+        public void dibujar(float[] px, float[] py){ ... }
+        //...
+}
+
+
+public class EstrategiaDibujoConcreta2 extends EstrategiaDibujo{
+        //...
+        public void dibujar(float[] px, float[] py){ ... }
+        //...
+}
+</pre>
+]]>
+	</section> 
+	<footer>
+	</footer>
+</solucion>
+<solucion>
+	 <id>12</id>
+	 <titulo> 
+		Solución 12 - Patrón de diseño Builder
+	</titulo>
+	 <autor> 
+	    David Benito 
+	</autor>
+	 <fecha>
+		20131205
+	</fecha>		 
+	<header>
+		 El patrón de diseño Builder te permite encapsular la funcionalidad y propiedades comunes entre diferentes objetos en un proceso de creación común.  Con ello, se obtiene mantenibilidad de los objetos resultantes, creando los contratos de clase para que su uso sea lo más robusto posible.
+	</header>
+	<imagen>
+		img/lego_builder_patron.png
+	</imagen>
+	 <section>
+		<![CDATA[
+<p>
+ <a href="https://es.wikipedia.org/wiki/Builder_%28patr%C3%B3n_de_dise%C3%B1o%29">Definición de wikipedia:</a> Como Patrón de diseño, el patrón builder (Constructor) es usado para permitir la creación de una variedad de objetos complejos desde un objeto fuente (Producto), el objeto fuente se compone de una variedad de partes que contribuyen individualmente a la creación de cada objeto complejo a través de un conjunto de llamadas a interfaces comunes de la clase Abstract Builder.
+</p>
+<p>
+El patrón Builder se compone de 4 clases:
+<ul>
+<li>
+<strong>Director</strong> : Encargado de realizar el proceso de creación del objeto paso a paso.
+</li>
+<li>
+<strong>AbstractBuilder</strong> (Builder) :  Contrato donde se especifica qué pasos son los del proceso de creación. De forma generalizada.
+</li>
+<li>
+<strong>ConcreteBuilder</strong> : Implementa los pasos de forma individual.
+</v>
+<li>
+<strong>Product</strong> : Objeto final a elaborar.
+</li>
+</ul>
+</p>
+<p>
+Ejemplo:
+El ejemplo es un Builder de pizzas. El añadir nuevas pizzas consistirá en crear un nueva Pizza (Product) y un nuevo PizzaBuilder (ConcreteBuilder). Esta nueva Pizza heredará la plantilla del proceso de creación común a todas las pizzas. 
+</p>
+<pre class="brush: js;">
+ /** "Abstract Builder" */
+abstract class PizzaBuilder {
+   protected Pizza pizza;
+
+   public Pizza getPizza() { return pizza; }
+   public void crearNuevaPizza() { pizza = new Pizza(); }
+
+   public abstract void buildMasa();
+   public abstract void buildSalsa();
+   public abstract void buildRelleno();
+}
+La clase AbstractBuilder tiene el contrato que cumplirá al ConcreteBuilder.
+/** "ConcreteBuilder" */
+class HawaiPizzaBuilder extends PizzaBuilder {
+   public void buildMasa()   { pizza.setMasa("suave"); }
+   public void buildSalsa()   { pizza.setSalsa("dulce"); }
+   public void buildRelleno() { pizza.setRelleno("chorizo+alcachofas"); }
+}
+/** "ConcreteBuilder" */
+class PicantePizzaBuilder extends PizzaBuilder {
+   public void buildMasa()   { pizza.setMasa("cocida"); }
+   public void buildSalsa()   { pizza.setSalsa("picante"); }
+   public void buildRelleno() { pizza.setRelleno("pimienta+salchichón"); }
+}
+
+/** "Director" */
+class Cocina {
+   private PizzaBuilder pizzaBuilder;
+
+   public void setPizzaBuilder(PizzaBuilder pb) { pizzaBuilder = pb; }
+   public Pizza getPizza() { return pizzaBuilder.getPizza(); }
+
+   public void construirPizza() {
+      pizzaBuilder.crearNuevaPizza();
+      pizzaBuilder.buildMasa();
+      pizzaBuilder.buildSalsa();
+      pizzaBuilder.buildRelleno();
+   }
+}
+</pre>
+]]>
+	</section> 
+	<footer>
+	</footer>
+</solucion>
+</xml>

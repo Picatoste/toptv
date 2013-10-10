@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="utf-8"> 
+    <link href="css/estilos.css" rel="stylesheet" media="screen">
+    
+	<title>Libros APP . BackboneJS</title>
+	<!-- load the libraries we need -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	
+	<script src="src/lib/underscore-min.js"></script>
+    <script src="src/lib/backbone-min.js"></script>
+    <!-- load our scripts -->
+    <script src="src/views/libro_view.js"></script>
+    <script src="src/models/libro_model.js"></script>
+    <script src="src/app.js"></script>
+</head>
+
+<body>
+	<div id="content">
+		<div id="ui"></div>
+		<div id="app"></div>
+	</div>
+</body>
+<!-- underscore templates -->
+<script type="text/template" id="searchTemplate">
+<h2>Libros</h2>
+<p>
+	<strong>Buscar</strong>
+	&nbsp;&nbsp;&nbsp;&nbsp;
+
+	Título o Autor: <input id="titulo" onKeyUp="onTituloFilter()" value='<%= filter %>'/>
+
+	&nbsp;&nbsp;&nbsp;&nbsp;
+
+	<strong>Ordenar</strong>
+			<select onChange="onChangeSortOrder()" id="sortField">
+				<option <% if(sortField === "titulo"){ %> selected <% } %> value="titulo">Titulo</option>
+				<option <% if(sortField === "autor"){ %> selected <% } %> value="autor">Autor</option>
+				<!-- podríamos ordenar por editorial tambien-->
+				<!-- <option value="autor">Editorial</option> -->
+		</select>
+	<select onChange="onChangeSortOrder()" id="sortOrder">
+			<option <% if(sortOrder === "asc"){ %> selected <% } %> value="asc">Ascendente</option>
+		<option <% if(sortOrder === "desc"){ %> selected <% } %> value="desc">Descendente</option>
+	</select>
+</p>
+</script>
+<script type="text/template" id="itemTemplate">
+    <div>
+    
+    	<a href='#/libro/<%= id %>'>
+			<img src='<%= img %>' width='95' height='150'>
+		</a>
+		<p >
+	    	<a href='#/libro/<%= id %>'><%= titulo %></a>
+	    	<br/><br/>
+			by <strong><%= autor %></strong>
+			<br/><br/>
+			<%= descripcion %>
+	    </p>
+    </div>
+ </script>
+
+ <script type="text/template" id="fichaTemplate">
+ 	<a href="#/libros">< volver</a>
+	<h2><%= titulo %></h2>
+	<p>
+		<img src='<%= img %>' width='95' height='150'>
+		<br/><br/>
+		by <strong><%= autor %></strong>
+		<br/><br/>
+		<i><%= editorial %></i>
+		<br/><br/>
+		<%= descripcion %>
+    </p>
+ </script>
+
+
+<script type="text/javascript">
+	$(function(){ 
+		
+		var bootstrap = {
+			data: [
+			   {
+				 id: "1",
+				 titulo: "El Juego de Ender",
+				 autor: "Orson Scott Card",
+				 descripcion: "La Tierra está amenazada por una especie extraterrestre de insectos que pretende destruir la humanidad...",
+				 img: "img/img1.jpg"
+				},
+				{
+				 id: "2",
+				 titulo: "Juego de tronos",
+				 autor: "George R. R. Martin",
+				 descripcion: "Tras el largo verano, el invierno se acerca a los Siete Reinos. Lord Eddard Stark, señor de Invernalia, deja sus dominios para unirse a la corte de su amigo el rey Robert Baratheon, llamado el Usurpador...",
+				 img: "img/img2.jpg"
+				},
+				{
+				 id: "3",
+				 titulo: "I robot",
+				 autor: "Isaac Asimov",
+				 descripcion: "Los robots de Isaac Asimov son máquinas capaces de llevar a cabo muy diversas tareas, y que a menudo se plantean a sí mismos problemas de 'conducta humana'. Pero estas cuestiones se resuelven en Yo, robot en el ámbito de las tres leyes fundamentales de la robótica...",
+				 img: "img/img3.jpg"
+				}
+			]
+		};
+
+		App.start(bootstrap);
+
+		//ui event listeners
+		onChangeSortOrder = function()
+		{
+			App.sortBy($('#sortField').val(), $('#sortOrder').val());
+		}
+
+		//ui event listeners
+		onTituloFilter=function()
+		{
+			App.filterBy($('#titulo').val());
+		}
+
+	});
+</script>
+</html>
