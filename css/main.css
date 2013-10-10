@@ -370,6 +370,20 @@ a:hover {
 	display: inline-block;
 }
 
+
+.linkbox-github
+{
+	opacity: 1; 
+	background:transparent url(../img/github-128.png) no-repeat top left;
+	width: 80px;
+	height: 80px;
+	background-size: 100%;
+	cursor:pointer;
+	border-radius:10px 10px 0px 0px;
+	float: right;
+	display: inline-block;
+}
+
 .aboutme:hover
 {
 	width: 80px;
