@@ -4,7 +4,7 @@
   <Languages xmlns="">
     <Language code="es" />
   </Languages>
-  <App xmlns="" ProductID="{b2435cbb-c1af-46b0-beb5-960c92956efa}" Title="TopTV" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="David Benito Ramírez" Description="App que muestra los programas/series más destacados del día." Publisher="David Benito Ramírez" PublisherID="{c9ba01e3-3e2e-4ecc-bfb5-d8629fe4bedd}">
+  <App xmlns="" ProductID="{b2435cbb-c1af-46b0-beb5-960c92956efa}" Title="TopTV" RuntimeType="Silverlight" Version="1.0.0.1" Genre="apps.normal" Author="David Benito Ramírez" Description="App que muestra los programas/series más destacados del día." Publisher="David Benito Ramírez" PublisherID="{c9ba01e3-3e2e-4ecc-bfb5-d8629fe4bedd}">
     <IconPath IsRelative="true" IsResource="false">ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />

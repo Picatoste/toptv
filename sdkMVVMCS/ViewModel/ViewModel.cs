@@ -61,7 +61,7 @@ namespace sdkMVVMCS.ViewModelNS
                 //IsolatedStorageSettings.ApplicationSettings.Remove("SaveFeeds_LastUpdate");
                 List<SyndicationItem> synItemRetrieved = new List<SyndicationItem>();
                 Feeds = ((ObservableCollection<FeedItemsModel>)IsolatedStorageSettings.ApplicationSettings["SaveFeeds_Items"]);
-                
+
                 foreach (FeedItemsModel feedAdd in from feeds in Feeds select feeds)
                 {
                     a.Add(feedAdd);
@@ -76,7 +76,8 @@ namespace sdkMVVMCS.ViewModelNS
                 }
                 //this.Feeds = a;
                 grabber_FeedRetrieved(null, new FeedRetrievedEventArgs(new SyndicationFeed(synItemRetrieved)));
-            }else
+            }
+            else
             {
                 grabber_FeedError(null, new FeedErrorEventArgs(new Exception("ERROR: Not saved feeds in settings.")));
             }
@@ -107,53 +108,33 @@ namespace sdkMVVMCS.ViewModelNS
                 newFeed.Title = feed.Title.Text;
                 newFeed.Content = ((TextSyndicationContent)feed.Content).Text;
                 newFeed.Summary = feed.Summary.Text;
-                newFeed.PublishDate  = feed.PublishDate.ToString("dd-MM-yyyy HH:mm");
+                newFeed.PublishDate = feed.PublishDate.ToString("dd-MM-yyyy HH:mm");
                 newFeed.Canal = feed.Copyright.Text;
                 a.Add(newFeed);
             }
             Feeds = a;
         }
 
-     
-
         public void SaveFeeds()
-        {
+        {   
+            IsolatedStorageSettings settings = IsolatedStorageSettings.ApplicationSettings;
+            Boolean HasSaveFeeds = settings.Where(s => s.Key.Contains("SaveFeeds")).Count() > 0;
 
-            if (Feeds != null && (this.LastUpdate.Date < DateTime.Now.Date))
+            if (Feeds != null && (!HasSaveFeeds || (this.LastUpdate.Date < DateTime.Now.Date)))
             {
-                IsolatedStorageSettings settings = IsolatedStorageSettings.ApplicationSettings;
 
                 var removeSettings = settings.Where(s => s.Key.Contains("SaveFeeds")).ToList();
                 foreach (var item in removeSettings)
                 {
                     settings.Remove(item.Key);
-                } 
-            
-                //if (settings.Contains("SaveFeeds_LastUpdate"))
-                //{
-                //    settings["SaveFeeds_LastUpdate"] = this.LastUpdate;
-                //}
-                //else
-                //{
-                    settings.Add("SaveFeeds_LastUpdate", this.LastUpdate);
-                //}
-
-                //foreach (FeedItemsModel a in Feeds)
-                //{
-                //if (settings.Contains("SaveFeeds_Items"))
-                //{
-                //    settings["SaveFeeds_Items"] = Feeds;
-                //}
-                //else
-                //{
-                    settings.Add("SaveFeeds_Items", Feeds);
-                //}
-                //}
+                }
+                settings.Add("SaveFeeds_LastUpdate", this.LastUpdate);
+                settings.Add("SaveFeeds_Items", Feeds);
                 settings.Save();
             }
         }
-      
+
     }
 
-    
+
 }

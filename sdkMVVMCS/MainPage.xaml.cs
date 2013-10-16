@@ -53,15 +53,15 @@ namespace sdkMVVMCS
         {
             base.OnNavigatedTo(e);
 
-            if (!StateUtilities.IsLaunching && this.State.ContainsKey("Feeds"))
-            {
-                vm = (ViewModel)this.State["Feeds"];
-                BindFeeds();
-            }
-            else
-            {
+            //if (!StateUtilities.IsLaunching && this.State.ContainsKey("Feeds"))
+            //{
+            //    vm = (ViewModel)this.State["Feeds"];
+            //    BindFeeds();
+            //}
+            //else
+            //{
                 vm.GetFeeds();
-            }
+            //}
         }
 
         protected override void OnNavigatedFrom(System.Windows.Navigation.NavigationEventArgs e)
@@ -69,14 +69,14 @@ namespace sdkMVVMCS
             base.OnNavigatedFrom(e);
             vm.SaveFeeds();
 
-            if (this.State.ContainsKey("Feeds"))
-            {
-                this.State["Feeds"] = vm;
-            }
-            else
-            {
-                this.State.Add("Feeds", vm);
-            }
+            //if (this.State.ContainsKey("Feeds"))
+            //{
+            //    this.State["Feeds"] = vm;
+            //}
+            //else
+            //{
+            //    this.State.Add("Feeds", vm);
+            //}
             StateUtilities.IsLaunching = false;
         }
 
