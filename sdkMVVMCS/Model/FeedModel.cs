@@ -10,6 +10,7 @@
   
 */
 using System.ComponentModel;
+using TopTV.Model;
 
 namespace sdkMVVMCS.Model
 {
@@ -26,6 +27,20 @@ namespace sdkMVVMCS.Model
             {
                 _id = value;
                 RaisePropertyChanged("Id");
+            }
+        }
+
+        private AlarmModel _alarm;
+        public AlarmModel Alarm
+        {
+            get
+            {
+                return _alarm;
+            }
+            set
+            {
+                _alarm = value;
+                RaisePropertyChanged("Alarm");
             }
         }
 
