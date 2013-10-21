@@ -17,12 +17,15 @@ using System.ServiceModel.Syndication;
 using WindowsBlogReader;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Input;
+using GalaSoft.MvvmLight.Command;
 
 
 namespace sdkMVVMCS.ViewModelNS
 {
     public class ViewModel
     {
+        const String URL_FEED = "http://www.sincroguia.tv/rss/rss.php?types=relevant";
         private DateTime lastUpdate;
         public DateTime LastUpdate
         {
@@ -30,15 +33,21 @@ namespace sdkMVVMCS.ViewModelNS
             set { lastUpdate = value; }
         }
 
-
         public ObservableCollection<FeedItemsModel> Feeds { get; set; }
         public EventHandler<FeedRetrievedEventArgs> grabber_FeedRetrieved;
         public EventHandler<FeedErrorEventArgs> grabber_FeedError;
-        //adsd
+        
         public Boolean GetFeeds()
         {
             Boolean HasStorageFeed = IsolatedStorageSettings.ApplicationSettings.Where(s => s.Key.Contains("SaveFeeds")).Count() > 0;
+
+             DateTime SaveFeeds_LastUpdate = DateTime.Now;
             if (HasStorageFeed)
+            {
+                SaveFeeds_LastUpdate = ((DateTime)IsolatedStorageSettings.ApplicationSettings["SaveFeeds_LastUpdate"]);
+            }
+
+            if (HasStorageFeed && SaveFeeds_LastUpdate.Date >= DateTime.Now.Date)
             {
                 GetSavedFeeds();
             }
@@ -58,7 +67,6 @@ namespace sdkMVVMCS.ViewModelNS
             if (settingsLastUpdate != null)
             {
                 this.LastUpdate = settingsLastUpdate;
-                //IsolatedStorageSettings.ApplicationSettings.Remove("SaveFeeds_LastUpdate");
                 List<SyndicationItem> synItemRetrieved = new List<SyndicationItem>();
                 Feeds = ((ObservableCollection<FeedItemsModel>)IsolatedStorageSettings.ApplicationSettings["SaveFeeds_Items"]);
 
@@ -74,7 +82,6 @@ namespace sdkMVVMCS.ViewModelNS
                     syndItemAdd.Copyright = new TextSyndicationContent(feedAdd.Canal);
                     synItemRetrieved.Add(syndItemAdd);
                 }
-                //this.Feeds = a;
                 grabber_FeedRetrieved(null, new FeedRetrievedEventArgs(new SyndicationFeed(synItemRetrieved)));
             }
             else
@@ -93,9 +100,14 @@ namespace sdkMVVMCS.ViewModelNS
                 new EventHandler<FeedErrorEventArgs>(grabber_FeedError);
 
             grabber.RetrieveFeedAsync(
-                new Uri("http://www.sincroguia.tv/rss/rss.php?types=relevant"));
+                new Uri(URL_FEED, UriKind.Absolute));
 
             LastUpdate = DateTime.Now;
+        }
+
+        public void CheckAlarms()
+        {
+            ViewModelAlarm.CheckAlarms(Feeds);
         }
 
         public void SetFeeds(SyndicationItem[] feeds)
@@ -118,9 +130,9 @@ namespace sdkMVVMCS.ViewModelNS
         public void SaveFeeds()
         {   
             IsolatedStorageSettings settings = IsolatedStorageSettings.ApplicationSettings;
-            Boolean HasSaveFeeds = settings.Where(s => s.Key.Contains("SaveFeeds")).Count() > 0;
+            //Boolean HasSaveFeedsAndNotChanges = settings.Where(s => s.Key.Contains("SaveFeeds")).Count() > 0;
 
-            if (Feeds != null && (!HasSaveFeeds || (this.LastUpdate.Date < DateTime.Now.Date)))
+            if (Feeds != null)
             {
 
                 var removeSettings = settings.Where(s => s.Key.Contains("SaveFeeds")).ToList();

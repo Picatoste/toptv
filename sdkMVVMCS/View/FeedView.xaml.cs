@@ -1,3 +1,6 @@
+using System;
+using System.Globalization;
+using System.Windows;
 /* 
     Copyright (c) 2011 Microsoft Corporation.  All rights reserved.
     Use of this sample source code is subject to the terms of the Microsoft license 
@@ -10,6 +13,8 @@
   
 */
 using System.Windows.Controls;
+using System.Windows.Data;
+using TopTV.Model;
 
 namespace sdkMVVMCS.View
 {
@@ -22,6 +27,54 @@ namespace sdkMVVMCS.View
 
 
       
+    }
+
+    public class VisibilityConverter : IValueConverter
+    {
+        public object Convert(
+            object value,
+            Type targetType,
+            object parameter,
+            CultureInfo culture)
+        {
+            bool visibility = (AlarmModel)value != null;
+        return visibility ? Visibility.Visible : Visibility.Collapsed;
+    }
+     
+    public object ConvertBack(
+        object value,
+        Type targetType,
+        object parameter,
+        CultureInfo culture)
+    {
+        Visibility visibility = (Visibility)value;
+        return (visibility == Visibility.Visible);
+    }
+
+    }
+
+    public class VisibilityConverterFalse : IValueConverter
+    {
+        public object Convert(
+            object value,
+            Type targetType,
+            object parameter,
+            CultureInfo culture)
+        {
+            bool visibility = (AlarmModel)value == null;
+            return visibility ? Visibility.Visible : Visibility.Collapsed;
+        }
+
+        public object ConvertBack(
+            object value,
+            Type targetType,
+            object parameter,
+            CultureInfo culture)
+        {
+            Visibility visibility = (Visibility)value;
+            return (visibility == Visibility.Visible);
+        }
+
     }
 
    

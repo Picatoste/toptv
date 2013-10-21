@@ -37,8 +37,11 @@ namespace sdkMVVMCS
             ShowSplash();
         }
 
+       
+
         private void BindFeeds()
         {
+            vm.CheckAlarms();
             if (vm.Feeds != null && vm.Feeds.Count > 0)
             {
                 FeedViewOnPage.DataContext = from feeds in vm.Feeds select feeds;
@@ -52,47 +55,23 @@ namespace sdkMVVMCS
         protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-
-            //if (!StateUtilities.IsLaunching && this.State.ContainsKey("Feeds"))
-            //{
-            //    vm = (ViewModel)this.State["Feeds"];
-            //    BindFeeds();
-            //}
-            //else
-            //{
-                vm.GetFeeds();
-            //}
+            vm.GetFeeds();
         }
 
         protected override void OnNavigatedFrom(System.Windows.Navigation.NavigationEventArgs e)
         {
             base.OnNavigatedFrom(e);
             vm.SaveFeeds();
-
-            //if (this.State.ContainsKey("Feeds"))
-            //{
-            //    this.State["Feeds"] = vm;
-            //}
-            //else
-            //{
-            //    this.State.Add("Feeds", vm);
-            //}
             StateUtilities.IsLaunching = false;
         }
 
         #region Load Feeds
 
-        private int counttry = 0;
+        //private int counttry = 0;
         void grabber_FeedError(object sender, FeedErrorEventArgs e)
         {
-            counttry++;
-            MessageBox.Show("Error download feeds. Try download intention " + counttry + " of 5 try. " + e.Error.Message);
-            if (counttry < 5){
-                vm.GetFeeds();
-            }else
-            {
-                HideSplash();
-            }
+           System.Diagnostics.Debug.WriteLine("ERROR - " + e.Error.Message);
+           HideSplash();
         }
 
         void grabber_FeedRetrieved(object sender, FeedRetrievedEventArgs e)

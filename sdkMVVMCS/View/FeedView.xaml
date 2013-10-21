@@ -17,13 +17,19 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local="clr-namespace:ImageLoader"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     d:DesignHeight="480" d:DesignWidth="480">
+    <UserControl.Resources>
+        <!-- Put this here but I'd put it in App.xaml really -->
+        <helpers:VisibilityConverter x:Key="VisibilityConverter"></helpers:VisibilityConverter>
+        <helpers:VisibilityConverterFalse x:Key="VisibilityConverterFalse"></helpers:VisibilityConverterFalse>
+    </UserControl.Resources>
+        <Grid x:Name="LayoutRoot" Background="#CCE79300" Margin="0,2" >
 
-    <Grid x:Name="LayoutRoot" Background="#CCE79300" Margin="0,2">
         <ListBox  ItemsSource="{Binding}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -40,7 +46,7 @@
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="60"/>
                                 <RowDefinition Height="30"/>
                                 <RowDefinition Height="30"/>
                                 <RowDefinition Height="100"/>
@@ -50,7 +56,21 @@
                                     <ImageBrush ImageSource="FondoImagen.png" />
                                 </StackPanel.Background>
                             </StackPanel>-->
-                            <local:ImageLoader Padding="4" Width="200" Grid.Column="0" Grid.RowSpan="4" Source="{Binding Content}">
+
+
+                            <toolkit:ContextMenuService.ContextMenu>
+                                <toolkit:ContextMenu  Background="#FFE79300" >
+                                    <toolkit:MenuItem Header="Agregar recordatorio" Background="#FFE79300" Foreground="White"
+                                        Command="{Binding  MainVM.AddAlarmCommand,  Source={StaticResource Locator}}" Visibility="{Binding Alarm, Converter={StaticResource VisibilityConverterFalse}}"
+                                        CommandParameter="{Binding}"/>
+                                    <toolkit:MenuItem Header="Eliminar recordatorio" Background="#FFE79300" Foreground="White"
+                                        Command="{Binding  MainVM.DeleteAlarmCommand,  Source={StaticResource Locator}}" Visibility="{Binding Alarm, Converter={StaticResource VisibilityConverter}}"
+                                        CommandParameter="{Binding}"/>
+                                    <!--<toolkit:MenuItem Header="Show" Command="{Binding MainVM.ShowCommand, Source={StaticResource Locator}}"
+                                        CommandParameter="{Binding}"/>-->
+                                </toolkit:ContextMenu>
+                            </toolkit:ContextMenuService.ContextMenu>
+                            <local:ImageLoader  toolkit:TiltEffect.IsTiltEnabled="True" Padding="4" Width="200" Grid.Column="0" Grid.RowSpan="4" Source="{Binding Content}">
                                 <local:ImageLoader.LoadingContent>
                                     <Grid Background="#CCE79300">
                                         <TextBlock VerticalAlignment="Center"  
@@ -68,11 +88,16 @@
                                     </Grid>
                                 </local:ImageLoader.FailedContent>
                             </local:ImageLoader>
-                            <!--<Image  Margin="5" x:Name="Imagen" Grid.Column="0" Grid.RowSpan="4" UseLayoutRounding="True" Source="{Binding Content}"   Stretch="UniformToFill" />-->
+                            <StackPanel Margin="3">
+                            <Image   Source="../alarm_feed.png" Width="24" Height="24" HorizontalAlignment="Right" VerticalAlignment="Bottom" Visibility="{Binding Alarm, Converter={StaticResource VisibilityConverter}}"  >
+                            </Image>
+                            </StackPanel>
+                                <!--<Image  Margin="5" x:Name="Imagen" Grid.Column="0" Grid.RowSpan="4" UseLayoutRounding="True" Source="{Binding Content}"   Stretch="UniformToFill" />-->
                             <TextBlock  Padding="5" x:Name="Title" Text="{Binding Path=Title, Mode=OneWay}" FontWeight="Bold" Grid.Column="1" Width="250" TextWrapping="Wrap"  Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" TextOptions.TextHintingMode="Animated" TextTrimming="None" Margin="5,0,0,0"/>
                             <TextBlock  Padding="2" x:Name="Canal" Text="{Binding Path=Canal, Mode=OneWay}" FontWeight="Bold" Grid.Column="1" Width="250" TextWrapping="Wrap"  Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0"  Foreground="White"/>
-                            <TextBlock Padding="2" x:Name="PublishDate" Text="{Binding Path=PublishDate, Mode=OneWay}" TextWrapping="Wrap"  Width="250"   Grid.Column="1" Grid.Row="2" TextAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0"/>
-                            <TextBlock FontSize="14"  Padding="2" x:Name="Content" Text="{Binding Path=Summary, Mode=OneWay}" TextWrapping="Wrap" Width="230"  Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" FontStyle="Italic" TextOptions.TextHintingMode="Animated" TextTrimming="None" Margin="5,0,0,0" />
+                            <TextBlock Padding="2" x:Name="PublishDate" Text="{Binding Path=PublishDate, Mode=OneWay}" TextWrapping="Wrap"  Width="250"   Grid.Column="1" Grid.Row="2" TextAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0"  Foreground="White"/>
+                            <TextBlock FontSize="14"  Padding="2" x:Name="Content" Text="{Binding Path=Summary, Mode=OneWay}" TextWrapping="Wrap" Width="230"  Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" FontStyle="Italic" TextOptions.TextHintingMode="Animated" TextTrimming="None" Margin="5,0,0,0"  Foreground="White" />
+
                         </Grid>
                     </StackPanel>
                 </DataTemplate>
