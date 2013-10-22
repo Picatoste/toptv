@@ -2,6 +2,8 @@
 /**
  * App 
  */
+ SocialSharing = {};
+ 
 var App = new (Backbone.Router.extend({
 
   routes: {
