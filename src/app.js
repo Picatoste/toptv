@@ -96,7 +96,7 @@ var App = new (Backbone.Router.extend({
 	//});
 	
 	 modelSocialShare = new SocialSharing();
-     this.SocialShareView = new SocialShareView({model: modelSocialShare});
+     this.SocialSharingView = new SocialSharingView({model: modelSocialShare});
      view.render();
 
   },
