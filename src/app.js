@@ -2,7 +2,6 @@
 /**
  * App 
  */
- SocialSharing = {};
  
 var App = new (Backbone.Router.extend({
 
@@ -96,8 +95,8 @@ var App = new (Backbone.Router.extend({
 	//	$(this).text(day + '/' + month + '/' + year);
 	//});
 	
-	 modelSocialShare = new SocialSharing.Model();
-     viewSocialShare = new SocialSharing.View({model: model});
+	 modelSocialShare = new SocialSharing();
+     this.SocialShareView = new SocialShareView({model: modelSocialShare});
      view.render();
 
   },

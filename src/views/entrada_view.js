@@ -86,7 +86,7 @@ EntradaListaView = Backbone.View.extend({
 
 });
 
-SocialSharing.View = Backbone.View.extend({
+SocialSharingView = Backbone.View.extend({
   el: "#share-item",
  
   events: {

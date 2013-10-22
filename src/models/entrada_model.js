@@ -145,7 +145,7 @@ var EntradaList = Backbone.Collection.extend({
 
 });
 
-SocialSharing.Model = Backbone.Model.extend({
+var SocialSharing = Backbone.Model.extend({
   defaults: {
     author: 'David Benito',
     name: 'Soluciones DBR',
