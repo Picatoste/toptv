@@ -85,14 +85,18 @@ var App = new (Backbone.Router.extend({
     //no haria falta si cargamos del server ya que reaccionamos a los eventos :)
     entradasView.render();
 	
-	$('#buttonLikeIt').append('<fb:like href="' + encodeURIComponent(document.URL) + '" send="true" width="450" show_faces="true" font="tahoma"></fb:like>');
-	$(".fecha").each(function( index ) {
-		var dateString = $.trim($(this).text());
-		var year = dateString.substring(0,4);
-		var month = dateString.substring(4,6);
-		var day = dateString.substring(6,8);
-		$(this).text(day + '/' + month + '/' + year);
-	});
+	//$('#buttonLikeIt').append('<fb:like href="' + encodeURIComponent(document.URL) + '" send="true" width="450" show_faces="true" font="tahoma"></fb:like>');
+	//$(".fecha").each(function( index ) {
+	//	var dateString = $.trim($(this).text());
+	//	var year = dateString.substring(0,4);
+	//	var month = dateString.substring(4,6);
+	//	var day = dateString.substring(6,8);
+	//	$(this).text(day + '/' + month + '/' + year);
+	//});
+	
+	 modelSocialShare = new SocialSharing.Model();
+     viewSocialShare = new SocialSharing.View({model: model});
+     view.render();
 
   },
 
