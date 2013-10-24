@@ -77,7 +77,6 @@ namespace sdkMVVMCS.ViewModelNS
                     }
                 }
 
-                //AddALARM!!
             }
         }
     }
