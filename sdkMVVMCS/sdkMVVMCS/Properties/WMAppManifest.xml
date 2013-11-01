@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Deployment xmlns="http://schemas.microsoft.com/windowsphone/2012/deployment" AppPlatformVersion="8.0">
+  <DefaultLanguage xmlns="" code="es" />
+  <Languages xmlns="">
+    <Language code="es" />
+  </Languages>
+  <App xmlns="" ProductID="{b2435cbb-c1af-46b0-beb5-960c92956efa}" Title="TopTV" RuntimeType="Silverlight" Version="1.0.0.1" Genre="apps.normal" Author="David Benito Ramírez" Description="App que muestra los programas/series más destacados del día." Publisher="David Benito Ramírez" PublisherID="{c9ba01e3-3e2e-4ecc-bfb5-d8629fe4bedd}">
+    <IconPath IsRelative="true" IsResource="false">ApplicationIcon.png</IconPath>
+    <Capabilities>
+      <Capability Name="ID_CAP_NETWORKING" />
+    </Capabilities>
+    <Tasks>
+      <DefaultTask Name="_default" NavigationPage="MainPage.xaml" />
+      <ExtendedTask Name="ScheduledAgentTask">
+        <BackgroundServiceAgent Specifier="ScheduledTaskAgent" Name="ScheduledAgentTask" Source="ScheduledTaskAgentTV" Type="ScheduledTaskAgentTV.ScheduledAgent" />
+      </ExtendedTask>
+    </Tasks>
+    <Tokens>
+      <PrimaryToken TokenID="sdkMVVMCSToken" TaskName="_default">
+        <TemplateCycle>
+          <SmallImageURI IsRelative="true" IsResource="false">Small.png</SmallImageURI>
+          <Title>
+          </Title>
+          <Photo01ImageURI IsRelative="true" IsResource="false">Medium.png</Photo01ImageURI>
+          <Photo02ImageURI IsRelative="true" IsResource="false">
+          </Photo02ImageURI>
+          <Photo03ImageURI IsRelative="true" IsResource="false">
+          </Photo03ImageURI>
+          <Photo04ImageURI IsRelative="true" IsResource="false">
+          </Photo04ImageURI>
+          <Photo05ImageURI IsRelative="true" IsResource="false">
+          </Photo05ImageURI>
+          <Photo06ImageURI IsRelative="true" IsResource="false">
+          </Photo06ImageURI>
+          <Photo07ImageURI IsRelative="true" IsResource="false">
+          </Photo07ImageURI>
+          <Photo08ImageURI IsRelative="true" IsResource="false">
+          </Photo08ImageURI>
+          <Photo09ImageURI IsRelative="true" IsResource="false">
+          </Photo09ImageURI>
+          <Count>0</Count>
+          <HasLarge>True</HasLarge>
+          <DeviceLockImageURI IsRelative="true" IsResource="false">
+          </DeviceLockImageURI>
+        </TemplateCycle>
+      </PrimaryToken>
+    </Tokens>
+    <ScreenResolutions>
+      <ScreenResolution Name="ID_RESOLUTION_WVGA" />
+      <ScreenResolution Name="ID_RESOLUTION_WXGA" />
+      <ScreenResolution Name="ID_RESOLUTION_HD720P" />
+    </ScreenResolutions>
+  </App>
+</Deployment>
