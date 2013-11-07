@@ -5,6 +5,9 @@
     <AssemblyPart x:Name="GalaSoft.MvvmLight.WP8" Source="GalaSoft.MvvmLight.WP8.dll" />
     <AssemblyPart x:Name="Microsoft.Phone.Controls.Toolkit" Source="Microsoft.Phone.Controls.Toolkit.dll" />
     <AssemblyPart x:Name="Microsoft.Practices.ServiceLocation" Source="Microsoft.Practices.ServiceLocation.dll" />
+    <AssemblyPart x:Name="ModelTopTV" Source="ModelTopTV.dll" />
+    <AssemblyPart x:Name="ScheduledTaskAgentTV" Source="ScheduledTaskAgentTV.dll" />
+    <AssemblyPart x:Name="SharedTopTV" Source="SharedTopTV.dll" />
     <AssemblyPart x:Name="System.ServiceModel.Syndication" Source="System.ServiceModel.Syndication.dll" />
     <AssemblyPart x:Name="System.Windows.Interactivity" Source="System.Windows.Interactivity.dll" />
   </Deployment.Parts>

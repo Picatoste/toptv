@@ -101,9 +101,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="ImageLoader\ImageLoader.cs" />
-    <Compile Include="Model\Alarm.cs" />
-    <Compile Include="Reader\FeedData.cs" />
-    <Compile Include="Model\FeedModel.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
@@ -183,7 +180,6 @@
     <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Delete.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Select.png" />
-    <Content Include="ViewModel\alarm.wav" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="GalaSoft.MvvmLight.Extras.WP8">
@@ -207,6 +203,20 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="BackgroundScreen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ModelTopTV\ModelTopTV.csproj">
+      <Project>{9172B76A-D840-4F02-A364-999B4F0B1396}</Project>
+      <Name>ModelTopTV</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ScheduledTaskAgentTV\ScheduledTaskAgentTV.csproj">
+      <Project>{64AFDB51-AB68-4E64-9C5F-083C8B6E06E0}</Project>
+      <Name>ScheduledTaskAgentTV</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SharedTopTV\SharedTopTV.csproj">
+      <Project>{7C7FA50D-DE6F-47D0-ACA4-8D671ABF78F5}</Project>
+      <Name>SharedTopTV</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />

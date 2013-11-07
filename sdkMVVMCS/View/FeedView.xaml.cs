@@ -24,9 +24,6 @@ namespace sdkMVVMCS.View
         {
             InitializeComponent();
         }
-
-
-      
     }
 
     public class VisibilityConverter : IValueConverter

@@ -147,17 +147,20 @@ namespace TopTV.Model
             return copy;
         }
 
-
+        private string ConvertCDATA(string content)
+        {
+            return "<![CDATA[" + content + "]]>";
+        }
         public XDocument ToXML()
         {
-            XDocument docFeed = new XDocument(new XDeclaration("1.0", "utf8", "yes"));
+            XDocument docFeed = new XDocument(new XDeclaration("1.0", "ISO-8859-1", "yes"));
             docFeed.Add(new XElement("feed",
                    new XAttribute("id", this.Id),
-                   new XAttribute("title", this.Title),
-                   new XAttribute("canal", this.Canal),
-                   new XAttribute("content", this.Content),
-                   new XAttribute("summary", this.Summary),
-                   new XAttribute("date", this.PublishDate),
+                   new XAttribute("title", this.Title.Replace(((char)0xFEFF).ToString(), "")),
+                   new XAttribute("canal", this.Canal.Replace(((char)0xFEFF).ToString(), "")),
+                   new XAttribute("content", this.Content.Replace(((char)0xFEFF).ToString(), "")),
+                   new XAttribute("summary", this.Summary.Replace(((char)0xFEFF).ToString(), "")),
+                   new XAttribute("date", this.PublishDate.Replace(((char)0xFEFF).ToString(), "")),
                    new XAttribute("has_alarm", this.Alarm != null)));
 
             return docFeed;

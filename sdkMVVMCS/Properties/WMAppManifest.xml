@@ -11,29 +11,38 @@
     </Capabilities>
     <Tasks>
       <DefaultTask Name="_default" NavigationPage="MainPage.xaml" />
+      <ExtendedTask Name="ScheduledAgentTask">
+        <BackgroundServiceAgent Specifier="ScheduledTaskAgent" Name="ScheduledAgentTask" Source="ScheduledTaskAgentTV" Type="ScheduledTaskAgentTV.ScheduledAgent" />
+      </ExtendedTask>
     </Tasks>
     <Tokens>
       <PrimaryToken TokenID="sdkMVVMCSToken" TaskName="_default">
-        <TemplateFlip>
-          <SmallImageURI IsResource="false" IsRelative="true">Small.png</SmallImageURI>
-          <Count>0</Count>
-          <BackgroundImageURI IsResource="false" IsRelative="true">Medium.png</BackgroundImageURI>
+        <TemplateCycle>
+          <SmallImageURI IsRelative="true" IsResource="false">Small.png</SmallImageURI>
           <Title>
           </Title>
-          <BackContent>
-          </BackContent>
-          <BackBackgroundImageURI>
-          </BackBackgroundImageURI>
-          <BackTitle>
-          </BackTitle>
-          <LargeBackgroundImageURI IsRelative="true" IsResource="false">Large.png</LargeBackgroundImageURI>
-          <LargeBackContent />
-          <LargeBackBackgroundImageURI IsRelative="true" IsResource="false">
-          </LargeBackBackgroundImageURI>
-          <DeviceLockImageURI>
-          </DeviceLockImageURI>
+          <Photo01ImageURI IsRelative="true" IsResource="false">Medium.png</Photo01ImageURI>
+          <Photo02ImageURI IsRelative="true" IsResource="false">
+          </Photo02ImageURI>
+          <Photo03ImageURI IsRelative="true" IsResource="false">
+          </Photo03ImageURI>
+          <Photo04ImageURI IsRelative="true" IsResource="false">
+          </Photo04ImageURI>
+          <Photo05ImageURI IsRelative="true" IsResource="false">
+          </Photo05ImageURI>
+          <Photo06ImageURI IsRelative="true" IsResource="false">
+          </Photo06ImageURI>
+          <Photo07ImageURI IsRelative="true" IsResource="false">
+          </Photo07ImageURI>
+          <Photo08ImageURI IsRelative="true" IsResource="false">
+          </Photo08ImageURI>
+          <Photo09ImageURI IsRelative="true" IsResource="false">
+          </Photo09ImageURI>
+          <Count>0</Count>
           <HasLarge>True</HasLarge>
-        </TemplateFlip>
+          <DeviceLockImageURI IsRelative="true" IsResource="false">
+          </DeviceLockImageURI>
+        </TemplateCycle>
       </PrimaryToken>
     </Tokens>
     <ScreenResolutions>

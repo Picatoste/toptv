@@ -12,20 +12,21 @@
 using System;
 using System.Collections.ObjectModel;
 using System.IO.IsolatedStorage;
-using sdkMVVMCS.Model;
+using TopTV.Model;
 using System.ServiceModel.Syndication;
-using WindowsBlogReader;
+using TopTV.Utils;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.Command;
+using Microsoft.Phone.Shell;
+using ScheduledTaskAgentTV;
 
 
 namespace sdkMVVMCS.ViewModelNS
 {
     public class ViewModel
     {
-        const String URL_FEED = "http://www.sincroguia.tv/rss/rss.php?types=relevant";
         private DateTime lastUpdate;
         public DateTime LastUpdate
         {
@@ -36,12 +37,12 @@ namespace sdkMVVMCS.ViewModelNS
         public ObservableCollection<FeedItemsModel> Feeds { get; set; }
         public EventHandler<FeedRetrievedEventArgs> grabber_FeedRetrieved;
         public EventHandler<FeedErrorEventArgs> grabber_FeedError;
-        
+
         public Boolean GetFeeds()
         {
             Boolean HasStorageFeed = IsolatedStorageSettings.ApplicationSettings.Where(s => s.Key.Contains("SaveFeeds")).Count() > 0;
 
-             DateTime SaveFeeds_LastUpdate = DateTime.Now;
+            DateTime SaveFeeds_LastUpdate = DateTime.Now;
             if (HasStorageFeed)
             {
                 SaveFeeds_LastUpdate = ((DateTime)IsolatedStorageSettings.ApplicationSettings["SaveFeeds_LastUpdate"]);
@@ -53,7 +54,9 @@ namespace sdkMVVMCS.ViewModelNS
             }
             else
             {
-                UpdateFeeds();
+                DateTime lastUpdateFeed = new DateTime();
+                SettingsFeedHelper.UpdateFeeds(grabber_FeedRetrieved, grabber_FeedError, ref lastUpdateFeed);
+                LastUpdate = lastUpdateFeed;
             }
 
             return HasStorageFeed;
@@ -68,9 +71,7 @@ namespace sdkMVVMCS.ViewModelNS
             {
                 this.LastUpdate = settingsLastUpdate;
                 List<SyndicationItem> synItemRetrieved = new List<SyndicationItem>();
-                Feeds = ((ObservableCollection<FeedItemsModel>)IsolatedStorageSettings.ApplicationSettings["SaveFeeds_Items"]);
-
-                foreach (FeedItemsModel feedAdd in from feeds in Feeds select feeds)
+                foreach (FeedItemsModel feedAdd in ((List<FeedItemsModel>)IsolatedStorageSettings.ApplicationSettings["SaveFeeds_Items"]))
                 {
                     a.Add(feedAdd);
                     SyndicationItem syndItemAdd = new SyndicationItem();
@@ -80,8 +81,11 @@ namespace sdkMVVMCS.ViewModelNS
                     syndItemAdd.Content = new TextSyndicationContent(feedAdd.Content);
                     syndItemAdd.PublishDate = DateTime.Parse(feedAdd.PublishDate);
                     syndItemAdd.Copyright = new TextSyndicationContent(feedAdd.Canal);
-                    synItemRetrieved.Add(syndItemAdd);
+                    synItemRetrieved.Add(syndItemAdd); 
                 }
+
+                Feeds = a;
+
                 grabber_FeedRetrieved(null, new FeedRetrievedEventArgs(new SyndicationFeed(synItemRetrieved)));
             }
             else
@@ -90,20 +94,20 @@ namespace sdkMVVMCS.ViewModelNS
             }
         }
 
-        public void UpdateFeeds()
-        {
-            RssFeedGrabber grabber = new RssFeedGrabber();
+        //public void UpdateFeeds()
+        //{
+        //    RssFeedGrabber grabber = new RssFeedGrabber();
 
-            grabber.FeedRetrieved +=
-                new EventHandler<FeedRetrievedEventArgs>(grabber_FeedRetrieved);
-            grabber.FeedError +=
-                new EventHandler<FeedErrorEventArgs>(grabber_FeedError);
+        //    grabber.FeedRetrieved +=
+        //        new EventHandler<FeedRetrievedEventArgs>(grabber_FeedRetrieved);
+        //    grabber.FeedError +=
+        //        new EventHandler<FeedErrorEventArgs>(grabber_FeedError);
 
-            grabber.RetrieveFeedAsync(
-                new Uri(URL_FEED, UriKind.Absolute));
+        //    grabber.RetrieveFeedAsync(
+        //        new Uri(URL_FEED, UriKind.Absolute));
 
-            LastUpdate = DateTime.Now;
-        }
+        //    LastUpdate = DateTime.Now;
+        //}
 
         public void CheckAlarms()
         {
@@ -127,24 +131,23 @@ namespace sdkMVVMCS.ViewModelNS
             Feeds = a;
         }
 
-        public void SaveFeeds()
-        {   
-            IsolatedStorageSettings settings = IsolatedStorageSettings.ApplicationSettings;
-            //Boolean HasSaveFeedsAndNotChanges = settings.Where(s => s.Key.Contains("SaveFeeds")).Count() > 0;
+        //public void SaveFeeds()
+        //{
+        //    IsolatedStorageSettings settings = IsolatedStorageSettings.ApplicationSettings;
+        //    //Boolean HasSaveFeedsAndNotChanges = settings.Where(s => s.Key.Contains("SaveFeeds")).Count() > 0;
 
-            if (Feeds != null)
-            {
-
-                var removeSettings = settings.Where(s => s.Key.Contains("SaveFeeds")).ToList();
-                foreach (var item in removeSettings)
-                {
-                    settings.Remove(item.Key);
-                }
-                settings.Add("SaveFeeds_LastUpdate", this.LastUpdate);
-                settings.Add("SaveFeeds_Items", Feeds);
-                settings.Save();
-            }
-        }
+        //    if (Feeds != null)
+        //    {
+        //        var removeSettings = settings.Where(s => s.Key.Contains("SaveFeeds")).ToList();
+        //        foreach (var item in removeSettings)
+        //        {
+        //            settings.Remove(item.Key);
+        //        }
+        //        settings.Add("SaveFeeds_LastUpdate", this.LastUpdate);
+        //        settings.Add("SaveFeeds_Items", Feeds);
+        //        settings.Save();
+        //    }
+        //}
 
     }
 
