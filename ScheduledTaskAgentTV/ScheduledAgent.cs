@@ -108,18 +108,16 @@ namespace ScheduledTaskAgentTV
 
                         //docfeed = XDocument.Load(isoStream);
                         isoStore.Dispose();
-                        isoStream.Flush();
-                        isoStream.Close();
                         isoStream.Dispose();
                     }
                 }
 
                 if (docfeed != null)
                 {
-                    string title = docfeed.Element("feed").Attribute("title").Value;
-                    string date = docfeed.Element("feed").Attribute("date").Value;
-                    string canal = docfeed.Element("feed").Attribute("canal").Value;
-                    Boolean alarm = docfeed.Element("feed").Attribute("has_alarm").Value == "true";
+                    string title = docfeed.Element("feed").Descendants("title").FirstOrDefault().Value;
+                    string date = docfeed.Element("feed").Descendants("date").FirstOrDefault().Value;
+                    string canal = docfeed.Element("feed").Descendants("canal").FirstOrDefault().Value;
+                    Boolean alarm = docfeed.Element("feed").Descendants("has_alarm").FirstOrDefault().Value == "true";
 
 
                     if (title.Length >= 135)
@@ -141,7 +139,7 @@ namespace ScheduledTaskAgentTV
             if (tile != null && IsolatedStorageSettings.ApplicationSettings.Contains("SaveFeeds_TotalFeeds"))
             {
                 CycleTileData data = new CycleTileData();
-                for (int i = 1; (Convert.ToInt32(IsolatedStorageSettings.ApplicationSettings["SaveFeeds_TotalFeeds"]) > i && i <= 5); i++)
+                for (int i = 0; (Convert.ToInt32(IsolatedStorageSettings.ApplicationSettings["SaveFeeds_TotalFeeds"])-1 > i && i <= 4); i++)
                 {
                     data.Count = 0;
                     data.SmallBackgroundImage = new Uri("isostore:/Shared/ShellContent/TopTVTilesContent_SmallBackgroundImage.jpg", UriKind.Absolute);
@@ -154,11 +152,11 @@ namespace ScheduledTaskAgentTV
                     Title = "Top TV",
                     CycleImages = new Uri[]
                 {
+                        new Uri("isostore:/Shared/ShellContent/TopTVTilesContent_MediumBackgroundImage_back0.jpg", UriKind.Absolute), 
                         new Uri("isostore:/Shared/ShellContent/TopTVTilesContent_MediumBackgroundImage_back1.jpg", UriKind.Absolute), 
                         new Uri("isostore:/Shared/ShellContent/TopTVTilesContent_MediumBackgroundImage_back2.jpg", UriKind.Absolute), 
                         new Uri("isostore:/Shared/ShellContent/TopTVTilesContent_MediumBackgroundImage_back3.jpg", UriKind.Absolute), 
-                        new Uri("isostore:/Shared/ShellContent/TopTVTilesContent_MediumBackgroundImage_back4.jpg", UriKind.Absolute), 
-                        new Uri("isostore:/Shared/ShellContent/TopTVTilesContent_MediumBackgroundImage_back5.jpg", UriKind.Absolute),
+                        new Uri("isostore:/Shared/ShellContent/TopTVTilesContent_MediumBackgroundImage_back4.jpg", UriKind.Absolute),
                 }
                 });
             }

@@ -22,69 +22,88 @@
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
-    d:DesignHeight="480" d:DesignWidth="480">
+    d:DesignHeight="210" d:DesignWidth="480">
     <UserControl.Resources>
         <!-- Put this here but I'd put it in App.xaml really -->
         <helpers:VisibilityConverter x:Key="VisibilityConverter"></helpers:VisibilityConverter>
         <helpers:VisibilityConverterFalse x:Key="VisibilityConverterFalse"></helpers:VisibilityConverterFalse>
     </UserControl.Resources>
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto" >
         <Grid x:Name="LayoutRoot" Background="#CCE79300" Margin="0,2" >
-        <ListBox  ItemsSource="{Binding}">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <Image Name="ImagenBackground" Source="FondoImagen.png" Width="480"/>
-                        <Grid Margin="10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="200"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="60"/>
-                                <RowDefinition Height="30"/>
-                                <RowDefinition Height="30"/>
-                                <RowDefinition Height="100"/>
-                            </Grid.RowDefinitions>
-                            <toolkit:ContextMenuService.ContextMenu>
-                                <toolkit:ContextMenu  Background="#FFE79300" >
-                                    <toolkit:MenuItem Header="Agregar recordatorio" Background="#FFE79300" Foreground="White"
+            <ItemsControl ItemsSource="{Binding}" >
+                <ItemsControl.ItemTemplate >
+                    <DataTemplate toolkit:TiltEffect.IsTiltEnabled="True">
+                        <StackPanel>
+                            <Grid Margin="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="450"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="210"/>
+                                </Grid.RowDefinitions>
+                                <toolkit:ContextMenuService.ContextMenu >
+                                    <toolkit:ContextMenu  Background="#FFE79300" >
+                                        <toolkit:MenuItem Header="Agregar recordatorio" Background="#FFE79300" Foreground="White"
                                         Command="{Binding  MainVM.AddAlarmCommand,  Source={StaticResource Locator}}" Visibility="{Binding Alarm, Converter={StaticResource VisibilityConverterFalse}}"
                                         CommandParameter="{Binding}"/>
-                                    <toolkit:MenuItem Header="Eliminar recordatorio" Background="#FFE79300" Foreground="White"
+                                        <toolkit:MenuItem Header="Eliminar recordatorio" Background="#FFE79300" Foreground="White"
                                         Command="{Binding  MainVM.DeleteAlarmCommand,  Source={StaticResource Locator}}" Visibility="{Binding Alarm, Converter={StaticResource VisibilityConverter}}"
                                         CommandParameter="{Binding}"/>
-                                </toolkit:ContextMenu>
-                            </toolkit:ContextMenuService.ContextMenu>
-                            <local:ImageLoader  toolkit:TiltEffect.IsTiltEnabled="True" Padding="4" Width="200" Grid.Column="0" Grid.RowSpan="4" Source="{Binding Content}">
-                                <local:ImageLoader.LoadingContent>
-                                    <Grid Background="#CCE79300">
-                                        <TextBlock VerticalAlignment="Center"  
+                                    </toolkit:ContextMenu>
+                                </toolkit:ContextMenuService.ContextMenu>
+                                <local:ImageLoader Padding="4" Width="450" Grid.Column="0" Grid.RowSpan="4" Source="{Binding Content}">
+                                    <local:ImageLoader.Background>
+                                        <ImageBrush Stretch="Fill"/>
+                                    </local:ImageLoader.Background>
+                                    <local:ImageLoader.LoadingContent>
+                                        <Grid Background="#CCE79300">
+                                            <TextBlock VerticalAlignment="Center"  
                                         HorizontalAlignment="Center"  
                                         Text="Cargando..."  
                                         FontSize="24" />
-                                    </Grid>
-                                </local:ImageLoader.LoadingContent>
-                                <local:ImageLoader.FailedContent>
-                                    <Grid Background="#FFE75F00">
-                                        <TextBlock VerticalAlignment="Center"  
+                                        </Grid>
+                                    </local:ImageLoader.LoadingContent>
+                                    <local:ImageLoader.FailedContent>
+                                        <Grid Background="#FFE75F00">
+                                            <TextBlock VerticalAlignment="Center"  
                                         HorizontalAlignment="Center"  
                                         Text="Fallo cargando."  
                                         FontSize="24" />
-                                    </Grid>
-                                </local:ImageLoader.FailedContent>
-                            </local:ImageLoader>
-                            <StackPanel Margin="3">
-                            <Image   Source="../alarm_feed.png" Width="24" Height="24" HorizontalAlignment="Right" VerticalAlignment="Bottom" Visibility="{Binding Alarm, Converter={StaticResource VisibilityConverter}}"  >
-                            </Image>
-                            </StackPanel>
-                            <TextBlock  Padding="5" x:Name="Title" Text="{Binding Path=Title, Mode=OneWay}" FontWeight="Bold" Grid.Column="1" Width="250" TextWrapping="Wrap"  Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" TextOptions.TextHintingMode="Animated" TextTrimming="None" Margin="5,0,0,0"/>
-                            <TextBlock  Padding="2" x:Name="Canal" Text="{Binding Path=Canal, Mode=OneWay}" FontWeight="Bold" Grid.Column="1" Width="250" TextWrapping="Wrap"  Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0"  Foreground="White"/>
-                            <TextBlock Padding="2" x:Name="PublishDate" Text="{Binding Path=PublishDate, Mode=OneWay}" TextWrapping="Wrap"  Width="250"   Grid.Column="1" Grid.Row="2" TextAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0"  Foreground="White"/>
-                            <TextBlock FontSize="14"  Padding="2" x:Name="Content" Text="{Binding Path=Summary, Mode=OneWay}" TextWrapping="Wrap" Width="230"  Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" FontStyle="Italic" TextOptions.TextHintingMode="Animated" TextTrimming="None" Margin="5,0,0,0"  Foreground="White" />
-                        </Grid>
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-    </Grid>
+                                        </Grid>
+                                    </local:ImageLoader.FailedContent>
+                                </local:ImageLoader>
+                                <Image   Source="../alarm_feed.png" Width="24" Height="24" HorizontalAlignment="Left" VerticalAlignment="Bottom" Visibility="{Binding Alarm, Converter={StaticResource VisibilityConverter}}"  >
+                                </Image>
+                                <Grid HorizontalAlignment="Right" Height="450" Width="250">
+                                    <Grid.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0" SpreadMethod="Reflect">
+                                            <LinearGradientBrush.RelativeTransform>
+                                                <CompositeTransform CenterY="0.5" CenterX="0.5" Rotation="270"/>
+                                            </LinearGradientBrush.RelativeTransform>
+                                            <GradientStop Color="#F9E79300" Offset="0"/>
+                                            <GradientStop Color="#66E79300" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Grid.Background>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="250"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="50"/>
+                                        <RowDefinition Height="30"/>
+                                        <RowDefinition Height="30"/>
+                                        <RowDefinition Height="100"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock  Padding="5" x:Name="Title" Loaded="Title_Loaded" Text="{Binding Path=Title, Mode=OneWay}" FontWeight="Bold" Grid.Column="0" Width="Auto" TextWrapping="Wrap"  Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" TextOptions.TextHintingMode="Animated" TextTrimming="None" Margin="5,0,0,0"  Foreground="White"/>
+                                    <TextBlock  Padding="2" x:Name="Canal" Text="{Binding Path=Canal, Mode=OneWay}" FontWeight="Bold" Grid.Column="0" Width="250" TextWrapping="Wrap"  Grid.Row="1" HorizontalAlignment="Right"  VerticalAlignment="Center" Margin="5,0,0,0"  Foreground="White"/>
+                                    <TextBlock Padding="2" x:Name="PublishDate" Text="{Binding Path=PublishDate, Mode=OneWay}" TextWrapping="Wrap"  Width="250"   Grid.Column="0" Grid.Row="2" TextAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0"  Foreground="White"/>
+                                    <TextBlock FontSize="14"  Padding="2" x:Name="Content" Text="{Binding Path=Summary, Mode=OneWay}" TextWrapping="Wrap" Width="230"  Grid.Column="0" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" FontStyle="Italic" TextOptions.TextHintingMode="Animated" TextTrimming="None" Margin="5,0,0,0"  Foreground="White" />
+                                </Grid>
+                            </Grid>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Grid>
+    </ScrollViewer>
 </UserControl>

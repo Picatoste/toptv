@@ -16,7 +16,7 @@
     <Grid>
         <Image x:Name="imgDisplay" Source="{Binding ElementName=parent,Path=Source}"  
            ImageFailed="OnImageFailed"  
-           ImageOpened="OnImageOpened" Stretch="UniformToFill"/>
+           ImageOpened="OnImageOpened" Stretch="Uniform" HorizontalAlignment="Left"   />
         <ContentControl  
       Visibility="{Binding ElementName=parent,Path=IsLoading,Converter={StaticResource converter}}"  
       Content="{Binding ElementName=parent,Path=LoadingContent}"  

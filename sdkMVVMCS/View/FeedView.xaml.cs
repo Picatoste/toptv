@@ -24,6 +24,20 @@ namespace sdkMVVMCS.View
         {
             InitializeComponent();
         }
+
+        private void Title_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (((TextBlock)sender).Text.Length > 50)
+            {
+                ((TextBlock)sender).FontSize -= 3;
+            }
+            else if (((TextBlock)sender).Text.Length > 25)
+            {
+                ((TextBlock)sender).FontSize -= 2;
+            }
+           
+        }
+      
     }
 
     public class VisibilityConverter : IValueConverter
@@ -73,6 +87,7 @@ namespace sdkMVVMCS.View
         }
 
     }
+
 
    
 }

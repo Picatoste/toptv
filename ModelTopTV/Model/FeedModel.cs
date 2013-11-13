@@ -153,16 +153,16 @@ namespace TopTV.Model
         }
         public XDocument ToXML()
         {
+            
             XDocument docFeed = new XDocument(new XDeclaration("1.0", "ISO-8859-1", "yes"));
-            docFeed.Add(new XElement("feed",
-                   new XAttribute("id", this.Id),
-                   new XAttribute("title", this.Title.Replace(((char)0xFEFF).ToString(), "")),
-                   new XAttribute("canal", this.Canal.Replace(((char)0xFEFF).ToString(), "")),
-                   new XAttribute("content", this.Content.Replace(((char)0xFEFF).ToString(), "")),
-                   new XAttribute("summary", this.Summary.Replace(((char)0xFEFF).ToString(), "")),
-                   new XAttribute("date", this.PublishDate.Replace(((char)0xFEFF).ToString(), "")),
-                   new XAttribute("has_alarm", this.Alarm != null)));
-
+            docFeed.Add( new XElement("feed",
+                   new XElement("id", this.Id),
+                   new XElement("title", this.Title.ToString()),
+                   new XElement("canal", this.Canal.ToString()),
+                   new XElement("content", this.Content.ToString()),
+                   new XElement("summary", this.Summary.ToString()),
+                   new XElement("date", this.PublishDate.ToString()),
+                   new XElement("has_alarm", this.Alarm != null)));
             return docFeed;
         }
 
