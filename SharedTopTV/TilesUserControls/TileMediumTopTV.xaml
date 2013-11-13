@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="SharedTopTV.TileMediumTopTV"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="336" d:DesignWidth="336" Background="#66000000">
+
+    <Grid x:Name="LayoutRoot">
+        <Grid Name="gContent" Background="#66000000" HorizontalAlignment="Left" Height="199" Margin="70,55,0,0" VerticalAlignment="Top" Width="220">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="96*"/>
+                <RowDefinition Height="103*"/>
+                <RowDefinition Height="17*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Name="tbCanal" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="26" Width="194" FontStyle="Italic">
+            	<Run Text="Canal"/>
+            </TextBlock>
+            <TextBlock Name="tbDesc" HorizontalAlignment="Left" Margin="10,41,0,0" TextWrapping="Wrap" Text="Description" VerticalAlignment="Top" Height="131" Width="200" Grid.RowSpan="2" FontWeight="Bold"/>
+            <TextBlock Name="tbFecha" HorizontalAlignment="Right" Margin="0,81,0,0" TextWrapping="Wrap" Text="Fecha" VerticalAlignment="Top" Width="171" Grid.Row="1" Grid.RowSpan="2"/>
+        </Grid>
+
+    </Grid>
+</UserControl>
