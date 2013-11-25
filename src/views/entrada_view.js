@@ -98,7 +98,7 @@ SocialSharingView = Backbone.View.extend({
     '<div class="left"><a href="https://twitter.com/share?url=<%= encodeURIComponent(readUrl) %>&text=<%= encodeURIComponent(name) %>" target="_blank"><button id="TwitterButton">Twitter</button></a></div>'+
     '<div class="left"><a href="mailto:friend@somewhere.com?subject=Made Fresh Coffee - <%= name %>&body=by <%= author %>, <%= message %> <%= readUrl %>" target="_blank"><button id="EmailButton">Email</button></a></div>' +
     '<div class="left"><a href="https://plus.google.com/share?url=<%= encodeURIComponent(readUrl) %>" target="_blank"><button id="GoogleButton">Google+</button></a></div>'+
-    '<div class="left"><button id="URLButton">URL</button></div>' +
+    '<div class="left"><button id="URLButton">URL</button></div>'
 
  
   render: function () {
