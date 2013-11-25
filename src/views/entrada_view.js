@@ -98,7 +98,7 @@ SocialSharingView = Backbone.View.extend({
     '<div class="left margin_left_10"><a href="https://twitter.com/share?url=<%= encodeURIComponent(readUrl) %>&text=<%= encodeURIComponent(name) %>" target="_blank"><img class="right selectable" src="img/twitter_orange.png" title="Compartir twitter" alt="Compartir TW"></img></a></div>'+
     '<div class="left margin_left_10"><a href="mailto:friend@somewhere.com?subject=SolucionesDBR - <%= name %>&body=by <%= author %>, <%= message %> <%= readUrl %>" target="_blank"><img class="right selectable" src="img/email_orange.png" title="Compartir email" alt="Compartir Email"></img></a></div>' +
     '<div class="left margin_left_10"><a href="https://plus.google.com/share?url=<%= encodeURIComponent(readUrl) %>" target="_blank"><img class="right selectable" src="img/plus_orange.png" title="Compartir Google+" alt="Compartir GPlus"></img></a></div>' +
-	'<div class="right margin_left_10"><div class="fb-like" data-href="<%= readUrl %>" data-layout="box_count" data-action="like" data-show-faces="true" data-share="true"></div></div>',
+	'<div class="right margin_left_10"><div class="fb-like" data-href="<%= readUrl %>" data-layout="box_count" data-action="like" data-show-faces="true" data-share="false"></div></div>',
     
 
  
