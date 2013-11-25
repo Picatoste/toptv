@@ -283,15 +283,14 @@
 
 
 <script type="text/javascript">
-		window.fbAsyncInit = function() {
-		    FB.init({appId: 'your app id', status: true, cookie: true, xfbml: true});
-		};
-		(function() {
-		    var e = document.createElement('script');
-		    e.async = true;
-		    e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js#xfbml=1&appId=595636333827563';
-		    document.getElementById('fb-root').appendChild(e);
-		}());
+
+	(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=595636333827563";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
 
 	$(function(){ 
 		/**** BEGIN password ****/
