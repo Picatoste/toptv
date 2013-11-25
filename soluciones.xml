@@ -394,7 +394,7 @@ Otros: <a href="http://www.genbetadev.com/desarrollo-web/patron-de-diseno-mvc-de
 	 <autor>David Benito Ramírez</autor>
 	 <url_public>http://solucionesdbr.es/pages/solucion-14-wp8-crear-tile-user-control.html</url_public>
 	 <fecha>20132511</fecha>		 
-	<header>En Windows phone 8 (WP8) tenemos los futuros famosos tiles "baldosas". No dejan de ser los accesos directos a las aplicaciones que pueden contener información de la app a la que pertenecen. No obstante, estamos limitados en la personalización a 3 templates que nos proporcionan desde Microsoft.</header>
+	<header>En Windows phone 8 (WP8) tenemos los futuros famosos tiles (baldosas). No dejan de ser los accesos directos a las aplicaciones que pueden contener información de la app a la que pertenecen. No obstante, estamos limitados en la personalización a 3 templates que nos proporcionan desde Microsoft.</header>
 	<imagen>img/wp8tiles.png</imagen>
 	 <section>
 		<![CDATA[
