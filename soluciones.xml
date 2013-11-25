@@ -330,7 +330,7 @@ class Cocina {
 <solucion>
 	 <id>13</id>
 	 <titulo>Solución 13 - ¿Que es Backbone.js?</titulo>
-	 <url_public>http://solucionesdbr.es/pages/solucion-14-wp8-crear-tile-user-control.html</url_public>
+	 <url_public>http://solucionesdbr.es/pages/solucion-13-que-es-backbone.html</url_public>
 	 <autor>David Benito Ramírez</autor>
 	 <fecha>20131909</fecha>		 
 	<header>Backbone.js es un framework de Javascript que se basa en el patrón de diseño MVC (Model View Controller). Backbone es la solución para tener organizado tu código Javascript. Compatible 100% con Jquery, se aconseja su uso como complemento a Backbone. No obstante, se pueden utilizar otros framework "auxiliares" que no sean Jquery como MooTools.</header>
