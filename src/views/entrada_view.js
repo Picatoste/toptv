@@ -94,15 +94,12 @@ SocialSharingView = Backbone.View.extend({
   },
  
   template:
-    '<div><div><h3>Time to Deliver</h3>' +
-    '<p>You\'ve mixed a special coffee brew, named it, authored a message, and now it\'s time to send.</p>' +
-    '</div><div><ul>' +
-    '<li><a href="https://www.facebook.com/dialog/send?app_id=595636333827563&name=SolucionesDBR - <%= encodeURIComponent(name) %>&description=<%= encodeURIComponent(message) %>&link=<%= encodeURIComponent(readUrl) %>&redirect_uri=https://apps.facebook.com/solucionesDBR/" target="_blank"><button id="FacebookButton">Facebook</button></a></li>' +
-    '<li><a href="https://twitter.com/share?url=<%= encodeURIComponent(readUrl) %>&text=<%= encodeURIComponent(name) %>" target="_blank"><button id="TwitterButton">Twitter</button></a></li>'+
-    '<li><a href="mailto:friend@somewhere.com?subject=Made Fresh Coffee - <%= name %>&body=by <%= author %>, <%= message %> <%= readUrl %>" target="_blank"><button id="EmailButton">Email</button></a></li>' +
-    '<li><a href="https://plus.google.com/share?url=<%= encodeURIComponent(readUrl) %>" target="_blank"><button id="GoogleButton">Google+</button></a></li>'+
-    '<li><button id="URLButton">URL</button></li>' +
-    '</ul></div></div>',
+    '<div class="left"><a href="https://www.facebook.com/dialog/send?app_id=595636333827563&name=SolucionesDBR - <%= encodeURIComponent(name) %>&description=<%= encodeURIComponent(message) %>&link=<%= encodeURIComponent(readUrl) %>&redirect_uri=https://apps.facebook.com/solucionesDBR/" target="_blank"><button id="FacebookButton">Facebook</button></a></div>' +
+    '<div class="left"><a href="https://twitter.com/share?url=<%= encodeURIComponent(readUrl) %>&text=<%= encodeURIComponent(name) %>" target="_blank"><button id="TwitterButton">Twitter</button></a></div>'+
+    '<div class="left"><a href="mailto:friend@somewhere.com?subject=Made Fresh Coffee - <%= name %>&body=by <%= author %>, <%= message %> <%= readUrl %>" target="_blank"><button id="EmailButton">Email</button></a></div>' +
+    '<div class="left"><a href="https://plus.google.com/share?url=<%= encodeURIComponent(readUrl) %>" target="_blank"><button id="GoogleButton">Google+</button></a></div>'+
+    '<div class="left"><button id="URLButton">URL</button></div>' +
+
  
   render: function () {
     var dataContext = this.model.toJSON();
