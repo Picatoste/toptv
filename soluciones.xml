@@ -429,6 +429,10 @@ Otros: <a href="http://www.genbetadev.com/desarrollo-web/patron-de-diseno-mvc-de
 						    </Grid>
 					</UserControl>
 				</pre>
+				<p>
+					El resultado visual sería el siguiente:
+					<img align="middle" border="0" height="335" src="img/wp8tiles_1.png" width="335">
+				</p>
 			</li>
 			<li>
 				<strong>2.- Convertir el User Control en una imagen</strong>
@@ -469,15 +473,11 @@ Otros: <a href="http://www.genbetadev.com/desarrollo-web/patron-de-diseno-mvc-de
 			<li>
 			</li>
 		</ul>
-
+		<p>Este link de la comunidad de desarrollo de nokia, donde he extraído la información del articulo, explica detalladamente como hacerlo: </p> 
+		<a src="http://developer.nokia.com/Community/Wiki/Custom_Live_Tile_Layout_with_UserControl_as_image_source">http://developer.nokia.com/Community/Wiki/Custom_Live_Tile_Layout_with_UserControl_as_image_source</a>
 ]]>
 	</section> 
 	<footer>
-	<![CDATA[
-		<p>Este link de la comunidad de desarrollo de nokia, donde he extraído la información del articulo, explica detalladamente como hacerlo: </p> 
-		<a src="http://developer.nokia.com/Community/Wiki/Custom_Live_Tile_Layout_with_UserControl_as_image_source">http://developer.nokia.com/Community/Wiki/Custom_Live_Tile_Layout_with_UserControl_as_image_source</a>
-	
-]]>
 	</footer>
 </solucion>
 </xml>
