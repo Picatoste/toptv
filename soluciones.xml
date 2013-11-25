@@ -365,4 +365,119 @@ Otros: <a href="http://www.genbetadev.com/desarrollo-web/patron-de-diseno-mvc-de
 
 	</footer>
 </solucion>
+
+<solucion>
+	 <id>14</id>
+	 <titulo>Solución 14 - WP8 - Crear Tile a partir de UserControl</titulo>
+	 <autor>David Benito Ramírez</autor>
+	 <fecha>20132511</fecha>		 
+	<header>En Windows phone 8 (WP8) tenemos los futuros famosos tiles "baldosas". No dejan de ser los accesos directos a las aplicaciones que pueden contener información de la app a la que pertenecen. No obstante, estamos limitados en la personalización a 3 templates que nos proporcionan desde Microsoft.</header>
+	<imagen>img/wp8tiles.png</imagen>
+	 <section>
+		<![CDATA[
+		<p>
+			Cada app tiene asociado un tile principal y un tile secundario opcional.
+			En WP8 estamos limitados en el desarrollo a tres templates:
+		</p>
+		<ul>
+			<li>
+			<strong>Iconic Template</strong> : El más sencillo de todos, consta de una sola imagen de fondo y contenido. No obstante es el más configurable teniendo titulo, subtitulo, e imagen a modo de icono.
+			</li>
+			<li>
+			<strong>Flip Template</strong> : El tile que contiene "contraportada". Cada cierto tiempo se muestra la contraportada. Menos configurable que el Iconic template pero con la opción de doble configuración de contenido (portada y contraportada).</li>
+			<li>
+			<strong>Cycle Template</strong> : El tile en el cual se configura hasta 9 imagenes de fondo que irán pasando y mostrandose sin posibilidad de personalizar nada más que el titulo.
+			</li>
+		</ul>
+		<p>
+			Para ampliar información:  <a src="http://msdn.microsoft.com/en-us/library/windowsphone/develop/hh202948(v=vs.105).aspx">http://msdn.microsoft.com/en-us/library/windowsphone/develop/hh202948(v=vs.105).aspx</a>
+		</p>
+		<p>
+			Con estos templates predefinidos el desarrollador esta limitado y  deberá adaptar las funcionalidades de los tiles a estos templates.
+			Pero existe una solución. Se trataria de crear una imagen en ejecución con el contenido pegado (texto, lineas, dibujos).
+			Es decir el contenido textual y la imagen de fondo se fusionarían en una única imagen.
+		</p>
+		<ul>Los pasos serían los siguientes:
+			<li>
+				<strong>1.- Crear el User Control</strong>
+				<pre class="brush: xml;">
+					<UserControl x:Class="CustomTile.CustomTileControl"
+						    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+						    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+						    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+						    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+						    mc:Ignorable="d"
+						    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+						    FontSize="{StaticResource PhoneFontSizeNormal}"
+						    Foreground="{StaticResource PhoneForegroundBrush}"
+						    d:DesignHeight="336" Width="336">
+						    <Grid x:Name="LayoutRoot" Background="{StaticResource PhoneChromeBrush}">
+						        <TextBlock HorizontalAlignment="Left" Margin="-2,104,0,0" TextWrapping="Wrap"
+						          VerticalAlignment="Top" Height="77" Width="337" FontSize="50" Text="CustomTile"
+						          TextAlignment="Center"/>
+						        <Canvas HorizontalAlignment="Left" Height="97" VerticalAlignment="Top" Width="89"
+						          Background="#FFA00808"/>
+						        <Canvas HorizontalAlignment="Left" Height="97" VerticalAlignment="Top" Width="89"
+						          Background="#FFF0E507" Margin="247,0,0,0"/>
+						        <Canvas HorizontalAlignment="Left" Height="89" VerticalAlignment="Top" Width="88"
+						          Background="#FF077CF0" Margin="247,245,0,0"/>
+						        <TextBlock x:Name="tbDate" HorizontalAlignment="Left" Margin="0,181,0,0"
+						          TextWrapping="Wrap" VerticalAlignment="Top" Width="335" Height="65"
+						          TextAlignment="Center"  FontSize="30"/>
+						        <Canvas HorizontalAlignment="Left" Height="89" VerticalAlignment="Top" Width="88"
+						          Background="#FF44C115" Margin="1,247,0,0"/>
+						    </Grid>
+					</UserControl>
+				</pre>
+			</li>
+			<li>
+				<strong>2.- Convertir el User Control en una imagen</strong>
+				<pre class="brush: csharp;">
+						var customTile = new CustomTileControl();
+						customTile.Measure(new Size(336, 336));
+						customTile.Arrange(new Rect(0, 0, 336, 336));
+						var bmp = new WriteableBitmap(336, 336);
+						bmp.Render(customTile, null);
+						bmp.Invalidate();
+						const string filename = "/Shared/ShellContent/CustomTile.jpg";
+						using (var isf = IsolatedStorageFile.GetUserStoreForApplication())
+						{
+						  if (!isf.DirectoryExists("/CustomLiveTiles"))
+						  {
+						          isf.CreateDirectory("/CustomLiveTiles");
+						  }
+						  using (var stream = isf.OpenFile(filename, System.IO.FileMode.OpenOrCreate))
+						  {
+						          bmp.SaveJpeg(stream, 336, 366, 0, 100);
+						  }
+						}
+				</pre>
+			</li>
+				<strong>3.- Crear o Actualizar el tile con la imagen guardada.</strong>
+				<pre class="brush: csharp;">
+							
+					FlipTileData tileData = new FlipTileData
+					{
+				    //Title = "CustomSecondaryTile",
+				    WideBackgroundImage = new Uri("isostore:" + filename, UriKind.Absolute),
+				    BackgroundImage = new Uri("isostore:" + filename, UriKind.Absolute),
+					};
+					string tileUri = string.Concat("/MainPage.xaml?", "");
+					ShellTile.Create(new Uri(tileUri, UriKind.Relative), tileData,true);
+
+				</pre>
+			<li>
+			</li>
+		</ul>
+
+]]>
+	</section> 
+	<footer>
+	<![CDATA[
+		<p>Este link de la comunidad de desarrollo de nokia, donde he extraído la información del articulo, explica detalladamente como hacerlo: </p> 
+		<a src="http://developer.nokia.com/Community/Wiki/Custom_Live_Tile_Layout_with_UserControl_as_image_source">http://developer.nokia.com/Community/Wiki/Custom_Live_Tile_Layout_with_UserControl_as_image_source</a>
+	
+]]>
+	</footer>
+</solucion>
 </xml>
