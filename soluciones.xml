@@ -390,14 +390,17 @@ Otros: <a href="http://www.genbetadev.com/desarrollo-web/patron-de-diseno-mvc-de
 			</li>
 		</ul>
 		<p>
-			Para ampliar información:  <a src="http://msdn.microsoft.com/en-us/library/windowsphone/develop/hh202948(v=vs.105).aspx">http://msdn.microsoft.com/en-us/library/windowsphone/develop/hh202948(v=vs.105).aspx</a>
+			Para ampliar información:  <a href="http://msdn.microsoft.com/en-us/library/windowsphone/develop/hh202948(v=vs.105).aspx">http://msdn.microsoft.com/en-us/library/windowsphone/develop/hh202948(v=vs.105).aspx</a>
 		</p>
 		<p>
 			Con estos templates predefinidos el desarrollador esta limitado y  deberá adaptar las funcionalidades de los tiles a estos templates.
 			Pero existe una solución. Se trataria de crear una imagen en ejecución con el contenido pegado (texto, lineas, dibujos).
 			Es decir el contenido textual y la imagen de fondo se fusionarían en una única imagen.
 		</p>
-		<ul>Los pasos serían los siguientes:
+		<p>
+			Los pasos serían los siguientes:
+		</p>
+		<ul>
 			<li>
 				<strong>1.- Crear el User Control</strong>
 				<pre class="brush: xml;">
@@ -476,7 +479,7 @@ Otros: <a href="http://www.genbetadev.com/desarrollo-web/patron-de-diseno-mvc-de
 			</li>
 		</ul>
 		<p>Este link de la comunidad de desarrollo de nokia, donde he extraído la información del articulo, explica detalladamente como hacerlo: </p> 
-		<a src="http://developer.nokia.com/Community/Wiki/Custom_Live_Tile_Layout_with_UserControl_as_image_source">http://developer.nokia.com/Community/Wiki/Custom_Live_Tile_Layout_with_UserControl_as_image_source</a>
+		<a href="http://developer.nokia.com/Community/Wiki/Custom_Live_Tile_Layout_with_UserControl_as_image_source">http://developer.nokia.com/Community/Wiki/Custom_Live_Tile_Layout_with_UserControl_as_image_source</a>
 ]]>
 	</section> 
 	<footer>
