@@ -390,7 +390,7 @@ Otros: <a href="http://www.genbetadev.com/desarrollo-web/patron-de-diseno-mvc-de
 			</li>
 		</ul>
 		<p>
-			Para ampliar información:  <a href="http://msdn.microsoft.com/en-us/library/windowsphone/develop/hh202948(v=vs.105).aspx">http://msdn.microsoft.com/en-us/library/windowsphone/develop/hh202948(v=vs.105).aspx</a>
+			Para ampliar información:  <a href='http://msdn.microsoft.com/en-us/library/windowsphone/develop/hh202948(v=vs.105).aspx'>http://msdn.microsoft.com/en-us/library/windowsphone/develop/hh202948(v=vs.105).aspx</a>
 		</p>
 		<p>
 			Con estos templates predefinidos el desarrollador esta limitado y  deberá adaptar las funcionalidades de los tiles a estos templates.
@@ -479,7 +479,7 @@ Otros: <a href="http://www.genbetadev.com/desarrollo-web/patron-de-diseno-mvc-de
 			</li>
 		</ul>
 		<p>Este link de la comunidad de desarrollo de nokia, donde he extraído la información del articulo, explica detalladamente como hacerlo: </p> 
-		<a href="http://developer.nokia.com/Community/Wiki/Custom_Live_Tile_Layout_with_UserControl_as_image_source">http://developer.nokia.com/Community/Wiki/Custom_Live_Tile_Layout_with_UserControl_as_image_source</a>
+		<a href='http://developer.nokia.com/Community/Wiki/Custom_Live_Tile_Layout_with_UserControl_as_image_source'>http://developer.nokia.com/Community/Wiki/Custom_Live_Tile_Layout_with_UserControl_as_image_source</a>
 ]]>
 	</section> 
 	<footer>
