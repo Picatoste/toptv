@@ -95,7 +95,7 @@ var App = new (Backbone.Router.extend({
 	//	$(this).text(day + '/' + month + '/' + year);
 	//});
 	
-	 var modelSocialShare = new SocialSharing({readUrl: document.URL, name: entrada.get("titulo"), message: entrada.get("header")});
+	 var modelSocialShare = new SocialSharing({readUrl: entrada.get("url_public"), name: entrada.get("titulo"), message: entrada.get("header")});
      this.socialSharingView = new SocialSharingView({model: modelSocialShare});
      this.socialSharingView.render();
 

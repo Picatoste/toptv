@@ -9,7 +9,7 @@ Backbone.sync = function (method, model, options) {
  */
 var EntradaItem = Backbone.Model.extend({
 
-  defaults: { id:0, titulo: '', autor:'', fecha:'', header: '', imagen: '', section:'', footer:'' },
+  defaults: { id:0, url_public:'', titulo: '', autor:'', fecha:'', header: '', imagen: '', section:'', footer:'' },
 	
   fetch: function(options) {
   			options = options ? _.clone(options) : {};
@@ -43,7 +43,9 @@ var EntradaItem = Backbone.Model.extend({
 			this.set("header", json.solucion.header);
 			this.set("imagen", json.solucion.imagen);
 			this.set("section", json.solucion.section['#cdata']);
-			this.set("footer", json.solucion.footer);
+			this.set("footer", json.solucion.footer['#cdata']);
+			this.set("url_public", json.solucion.url_public);
+			
 		   return (this.sync || Backbone.sync).call(this, 'read', this, options);
 	}
 	    
@@ -132,7 +134,8 @@ var EntradaList = Backbone.Collection.extend({
 				EntradaItemAdd.set("header", json.solucion.header);
 				EntradaItemAdd.set("imagen", json.solucion.imagen);
 				EntradaItemAdd.set("section", json.solucion.section['#data']);
-				EntradaItemAdd.set("footer", json.solucion.footer);
+				EntradaItemAdd.set("footer", json.solucion.footer['#data']);
+				EntradaItemAdd.set("url_public", json.solucion.url_public);
 				collection.push(EntradaItemAdd, '');			
 			});
 			

@@ -3,6 +3,7 @@
 	 <id>1</id>
 	 <titulo>Solución 1 - JQuery - función find()</titulo>
 	 <autor>David Benito Ramírez</autor>
+	 <url_public>http://solucionesdbr.es/pages/solucion-14-wp8-crear-tile-user-control.html</url_public>
 	 <fecha>20110908</fecha>		 
 	<header>Una herramienta muy útil para añadir efectos ópticos y navegar entre tags HTML es el framework de Javascript Jquery. Tras añadir la referencia js a tu proyecto podrás utilizar esta potente herramienta que facilita el trabajo a la hora de bregar con el "duro" javascript. Una de las funciones que he descubrido recientemiente es el metodo find().</header>
 	<imagen>img/jquery_solucion1.png</imagen>
@@ -36,7 +37,11 @@
 			
 		]]>
 	</section>	 
-	<footer>JQuery, a día de hoy, es framework Javascript más popular y con más adeptos en la programación web.</footer>
+	<footer>
+	<![CDATA[
+		JQuery, a día de hoy, es framework Javascript más popular y con más adeptos en la programación web.
+		]]>
+	</footer>
 </solucion>
 <solucion>
 	 <id>2</id>
@@ -46,6 +51,7 @@
 	 <autor> 
 	    David Benito Ramírez
 	</autor>
+	 <url_public>http://solucionesdbr.es/pages/solucion-14-wp8-crear-tile-user-control.html</url_public>
 	 <fecha>
 		20110909
 	</fecha>		 
@@ -66,13 +72,16 @@
 		]]>
 	</section>		 
 	<footer>
-		Existen muchos más resaltadores de codigo para web. Incluso existen projectos en diferente lenguajes adaptados para la integración en códido, consiguiendo una forma sólida para conseguir el efecto "codigo de IDE".
+		<![CDATA[
+			Existen muchos más resaltadores de codigo para web. Incluso existen projectos en diferente lenguajes adaptados para la integración en códido, consiguiendo una forma sólida para conseguir el efecto "codigo de IDE".
+		]]>
 	</footer>
 </solucion>
 <solucion>
 	 <id>3</id>
 	 <titulo>Solución 3 - Invocar función de servidor (CSharp) desde cliente (JavaScript)</titulo>
 	 <autor>David Benito Ramírez</autor>
+	 <url_public>http://solucionesdbr.es/pages/solucion-14-wp8-crear-tile-user-control.html</url_public>
 	 <fecha>20110911</fecha>		 
 	 <header>Tenia que realizar un div pop-up de confirmación para eliminar un producto de un carrito de compra de una aplicación web .NET. El problema venía dado porqué esta función de EliminarProducto() hacía PostBack al servidor y el pop-up tenía que estar hecho en JQuery (Javascript). Ejecución en Cliente y ejecución en Servidor no son buenos compañeros.Aún tengo que comprobar que sea compatible en todos los navegadores.</header>
 	<imagen>img/dopostback.png</imagen>
@@ -142,13 +151,16 @@
 		]]>
 	</section>	 
 	<footer>
+	<![CDATA[
 	  
+	]]>
 	</footer>
 </solucion>
 <solucion>
 	 <id>11</id>
 	 <titulo>Solución 11 - Patron de diseño Strategy</titulo>
 	 <autor>David Benito Ramírez</autor>
+	 <url_public>http://solucionesdbr.es/pages/solucion-14-wp8-crear-tile-user-control.html</url_public>
 	 <fecha>20130321</fecha>		 
 	<header>Lo patrones de diseño son la evolución natural y sofisticada de la programación orientada a objeto (OO), son técnicas para aprovechar al máximo el potencial de la OO. Soluciones optimas que en caso de usarlas de forma adecuada darán un valor añadido a nuestros algoritmos  facilitando en el futuro las tareas mantenimiento y extensión de la misma. Empezaremos con el patrón de diseño Strategy.</header>
 	<imagen>img/strategy.jpg</imagen>
@@ -227,12 +239,16 @@ public class EstrategiaDibujoConcreta2 extends EstrategiaDibujo{
 </pre>
 ]]>
 	</section> 
-	<footer></footer>
+	<footer>
+	<![CDATA[ 
+	]]>
+	</footer>
 </solucion>
 <solucion>
 	 <id>12</id>
 	 <titulo>Solución 12 - Patrón de diseño Builder</titulo>
 	 <autor>David Benito Ramírez</autor>
+	 <url_public>http://solucionesdbr.es/pages/solucion-14-wp8-crear-tile-user-control.html</url_public>
 	 <fecha>20131205</fecha>		 
 	<header>El patrón de diseño Builder te permite encapsular la funcionalidad y propiedades comunes entre diferentes objetos en un proceso de creación común.  Con ello, se obtiene mantenibilidad de los objetos resultantes, creando los contratos de clase para que su uso sea lo más robusto posible.</header>
 	<imagen>img/lego_builder_patron.png</imagen>
@@ -305,12 +321,16 @@ class Cocina {
 </pre>
 ]]>
 	</section> 
-	<footer></footer>
+	<footer>
+	<![CDATA[ 
+	]]>
+	</footer>
 </solucion>
 
 <solucion>
 	 <id>13</id>
 	 <titulo>Solución 13 - ¿Que es Backbone.js?</titulo>
+	 <url_public>http://solucionesdbr.es/pages/solucion-14-wp8-crear-tile-user-control.html</url_public>
 	 <autor>David Benito Ramírez</autor>
 	 <fecha>20131909</fecha>		 
 	<header>Backbone.js es un framework de Javascript que se basa en el patrón de diseño MVC (Model View Controller). Backbone es la solución para tener organizado tu código Javascript. Compatible 100% con Jquery, se aconseja su uso como complemento a Backbone. No obstante, se pueden utilizar otros framework "auxiliares" que no sean Jquery como MooTools.</header>
@@ -362,7 +382,9 @@ Otros: <a href="http://www.genbetadev.com/desarrollo-web/patron-de-diseno-mvc-de
 ]]>
 	</section> 
 	<footer>
+	<![CDATA[
 
+	]]>
 	</footer>
 </solucion>
 
@@ -370,6 +392,7 @@ Otros: <a href="http://www.genbetadev.com/desarrollo-web/patron-de-diseno-mvc-de
 	 <id>14</id>
 	 <titulo>Solución 14 - WP8 - Crear Tile a partir de UserControl</titulo>
 	 <autor>David Benito Ramírez</autor>
+	 <url_public>http://solucionesdbr.es/pages/solucion-14-wp8-crear-tile-user-control.html</url_public>
 	 <fecha>20132511</fecha>		 
 	<header>En Windows phone 8 (WP8) tenemos los futuros famosos tiles "baldosas". No dejan de ser los accesos directos a las aplicaciones que pueden contener información de la app a la que pertenecen. No obstante, estamos limitados en la personalización a 3 templates que nos proporcionan desde Microsoft.</header>
 	<imagen>img/wp8tiles.png</imagen>
@@ -483,6 +506,8 @@ Otros: <a href="http://www.genbetadev.com/desarrollo-web/patron-de-diseno-mvc-de
 ]]>
 	</section> 
 	<footer>
+	<![CDATA[
+	]]>
 	</footer>
 </solucion>
 </xml>
