@@ -96,8 +96,8 @@ SocialSharingView = Backbone.View.extend({
   template:
 	'<div class="left margin_left_10"><a href="https://www.facebook.com/dialog/send?app_id=595636333827563&name=SolucionesDBR - <%= encodeURIComponent(name) %>&description=<%= encodeURIComponent(message) %>&link=<%= encodeURIComponent(readUrl) %>&redirect_uri=https://apps.facebook.com/solucionesDBR/" target="_blank"><img class="right selectable" src="img/facebook_orange.png" title="Compartir facebook" alt="Compartir FB"></img></a></div>' +
     '<div class="left margin_left_10"><a href="https://twitter.com/share?url=<%= encodeURIComponent(readUrl) %>&text=<%= encodeURIComponent(name) %>" target="_blank"><img class="right selectable" src="img/twitter_orange.png" title="Compartir twitter" alt="Compartir TW"></img></a></div>'+
-    '<div class="left margin_left_10"><a href="mailto:friend@somewhere.com?subject=SolucionesDBR - <%= name %>&body=by <%= author %>, <%= message %> <%= readUrl %>" target="_blank"><img class="right selectable" src="img/email_orange.png" title="Compartir email" alt="Compartir Email"></img></a></div>',
-    '<div class="left margin_left_10"><a href="https://plus.google.com/share?url=<%= encodeURIComponent(readUrl) %>" target="_blank"><img class="right selectable" src="img/plus_orange.png" title="Compartir Google+" alt="Compartir GPlus"></img></a></div>' +
+    '<div class="left margin_left_10"><a href="mailto:friend@somewhere.com?subject=SolucionesDBR - <%= name %>&body=by <%= author %>, <%= message %> <%= readUrl %>" target="_blank"><img class="right selectable" src="img/email_orange.png" title="Compartir email" alt="Compartir Email"></img></a></div>' +
+    '<div class="left margin_left_10"><a href="https://plus.google.com/share?url=<%= encodeURIComponent(readUrl) %>" target="_blank"><img class="right selectable" src="img/plus_orange.png" title="Compartir Google+" alt="Compartir GPlus"></img></a></div>',
 	 
 
  
