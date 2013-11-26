@@ -3,7 +3,7 @@
 	 <id>1</id>
 	 <titulo>Solución 1 - JQuery - función find()</titulo>
 	 <autor>David Benito Ramírez</autor>
-	 <url_public>http://solucionesdbr.es/pages/solucion-14-wp8-crear-tile-user-control.html</url_public>
+	 <url_public>http://solucionesdbr.es/pages/solucion-1-jquery-funcion-find.html</url_public>
 	 <fecha>20110908</fecha>		 
 	<header>Una herramienta muy útil para añadir efectos ópticos y navegar entre tags HTML es el framework de Javascript Jquery. Tras añadir la referencia js a tu proyecto podrás utilizar esta potente herramienta que facilita el trabajo a la hora de bregar con el "duro" javascript. Una de las funciones que he descubrido recientemiente es el metodo find().</header>
 	<imagen>img/jquery_solucion1.png</imagen>
@@ -51,7 +51,7 @@
 	 <autor> 
 	    David Benito Ramírez
 	</autor>
-	 <url_public>http://solucionesdbr.es/pages/solucion-14-wp8-crear-tile-user-control.html</url_public>
+	 <url_public>http://solucionesdbr.es/pages/solucion-2-tohtml-codigo-en-blogs.html</url_public>
 	 <fecha>
 		20110909
 	</fecha>		 
@@ -81,7 +81,7 @@
 	 <id>3</id>
 	 <titulo>Solución 3 - Invocar función de servidor (CSharp) desde cliente (JavaScript)</titulo>
 	 <autor>David Benito Ramírez</autor>
-	 <url_public>http://solucionesdbr.es/pages/solucion-14-wp8-crear-tile-user-control.html</url_public>
+	 <url_public>http://solucionesdbr.es/pages/solucion-3-invocar-funcion-servidor-desde-cliente.html</url_public>
 	 <fecha>20110911</fecha>		 
 	 <header>Tenia que realizar un div pop-up de confirmación para eliminar un producto de un carrito de compra de una aplicación web .NET. El problema venía dado porqué esta función de EliminarProducto() hacía PostBack al servidor y el pop-up tenía que estar hecho en JQuery (Javascript). Ejecución en Cliente y ejecución en Servidor no son buenos compañeros.Aún tengo que comprobar que sea compatible en todos los navegadores.</header>
 	<imagen>img/dopostback.png</imagen>
@@ -160,7 +160,7 @@
 	 <id>11</id>
 	 <titulo>Solución 11 - Patron de diseño Strategy</titulo>
 	 <autor>David Benito Ramírez</autor>
-	 <url_public>http://solucionesdbr.es/pages/solucion-14-wp8-crear-tile-user-control.html</url_public>
+	 <url_public>http://solucionesdbr.es/pages/solucion-11-patron-strategy.html</url_public>
 	 <fecha>20130321</fecha>		 
 	<header>Lo patrones de diseño son la evolución natural y sofisticada de la programación orientada a objeto (OO), son técnicas para aprovechar al máximo el potencial de la OO. Soluciones optimas que en caso de usarlas de forma adecuada darán un valor añadido a nuestros algoritmos  facilitando en el futuro las tareas mantenimiento y extensión de la misma. Empezaremos con el patrón de diseño Strategy.</header>
 	<imagen>img/strategy.jpg</imagen>
