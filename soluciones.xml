@@ -248,7 +248,7 @@ public class EstrategiaDibujoConcreta2 extends EstrategiaDibujo{
 	 <id>12</id>
 	 <titulo>Solución 12 - Patrón de diseño Builder</titulo>
 	 <autor>David Benito Ramírez</autor>
-	 <url_public>http://solucionesdbr.es/pages/solucion-14-wp8-crear-tile-user-control.html</url_public>
+	 <url_public>http://solucionesdbr.es/pages/solucion-12-patron-builder.html</url_public>
 	 <fecha>20131205</fecha>		 
 	<header>El patrón de diseño Builder te permite encapsular la funcionalidad y propiedades comunes entre diferentes objetos en un proceso de creación común.  Con ello, se obtiene mantenibilidad de los objetos resultantes, creando los contratos de clase para que su uso sea lo más robusto posible.</header>
 	<imagen>img/lego_builder_patron.png</imagen>
