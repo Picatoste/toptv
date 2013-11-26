@@ -40,52 +40,17 @@
     	
 	</head>
     <body>
-		<!--<a id="navAdmin" style="text-decoration:none; position: absolute;" onclick="javascript:$('#popupadmin').fadeIn(2000); $('#navAdmin').fadeOut(2000);" >
-			Admin
-		</a>-->
 		<div id="fb-root"></div>
-		<div id="admintoolbar" style="display:none; margin: 10px; margin-left: 50px;">
-				<a style="text-decoration:none;" href="http://horarios.renfe.com/cer/hjcer310.jsp?&nucleo=50&o=72302&d=71801&tc=DIA&td=D&df=20130530&th=1&ho=00&i=s&cp=NO&TXTInfo=">
-					<img alt="Ida y vuelta trabajo" title="Ida y vuelta trabajo" src="img/renfe_trabajo.png" width="100px" height="100px"/>
-				</a>		
-		</div>
 	    <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
 		<![endif]-->    
-		<!-- <script>
-			
-			//Read nodes
-			$.get("soluciones.xml", function (xml) {
-			$(xml).find("blog").each(function () {
-			var name = $(this).find('name').text();
-			if(!navigator.userAgent.match(/mozilla/i) && 
-			! navigator.userAgent.match(/webkit/i) ) {       
-			var description = $(this).find('description').html();
-			description = description.replace(']]>', '');	
-			description = description.replace(']]&gt;', '');	
-			
-		    }else{
-			var description = $(this).find('description').text();
-			}
-			var url = $(this).find('url').text();
-			
-			$("#article").append("<div   style='float:left;clear:both;'>" + description + "</div>");
-			
-			});
-			});
-		</script>  --> 
-		
 		<div class="header-container">
-			
             <header class="wrapper clearfix">
-            	<!-- <img src="img/robot_logo_y.png" class="no_print" style="position:absolute; width:100px;"/>
-				<h1 class="title"><a href="#">SOLUCIONES .NET</a></h1>-->
-				
 				<a style="text-decoration:none;" href='#/index'>
 					<div class="left">
 						<h1 style="margin:0px;"><img alt="SOLUCIONES .NET" src="img/Titulo.png" style="margin:0px;"> </img>
 						</h1>
-						<div class="subtitle">Soluciones sobre el mundo de la programación.(.NET, Android, ASP.NET, Javascript, SQL, 		otros). Por David Benito.
+						<div class="subtitle">Soluciones sobre el mundo de la programación.(.NET, Android, ASP.NET, Javascript, SQL, otros). Por David Benito.
 					</div>
 				</a>
                 <nav>
@@ -96,31 +61,6 @@
 					</ul>
 				</nav>
 				
-				</div>
-				<div id="popupadmin" style="display:none; position: absolute;margin-left: 55%; margin-top: 1%;" >
-					<div  id="container">
-						<h1>Acceso admin:</h1>
-						<div>
-							<ul>
-								<li>
-									<label for="pswd">Contraseña:</label>
-									<span><input id="pswd" type="password" name="pswd"></span>
-								</li>
-								<li>
-									<button type="submit" onclick="javascript:$('#admintoolbar').fadeIn(2000);">Mostrar</button>
-								</li>
-							</ul>	
-						</div>			
-						<div id="pswd_info">
-							<h4>La contraseña debe tener los siguientes requerimientos:</h4>
-							<ul>
-								<li id="letter" class="invalid">Al menos <strong>una letra</strong></li>
-								<li id="capital" class="invalid">Al menos <strong>una mayuscula</strong></li>
-								<li id="number" class="invalid">Al menos <strong>un numero</strong></li>
-								<li id="length" class="invalid">Al menos <strong>8 caracteres</strong></li>
-							</ul>
-						</div>
-					</div>
 				</div>
 				<!--href='#/aboutme'-->
 				<a style="text-decoration:none;" >
@@ -245,7 +185,7 @@
 		<img id="imageSolucion" src='<%= imagen %>'></img>
 		<%= titulo %>
 	</h1>
-	<div class="right"><div class="fb-like" data-href="<%= url_public %>" data-layout="box_count" data-action="like" data-show-faces="true" data-share="false"></div></div>',
+	<div class="right titulo_header"><div class="fb-like" data-href="<%= url_public %>" data-layout="box_count" data-action="like" data-show-faces="true" data-share="false"></div></div>',
 <div class="menu_articulo left clear">
 	<div class="left">
 		<a class="selectable" href='#/soluciones/'><img src="img/back_orange.png" title="Volver" 		alt="Volver"></img></a>   
@@ -278,7 +218,7 @@
 <footer class='article_font' style="border-bottom:1px dotted orange; padding-bottom:10px;">
 	<%= footer %>
 </footer>
-<div class="fb-comments" data-href="<%= url_public  %>" data-num-posts="5" data-width="1000"></div>
+<div class="fb-comments" data-href="<%= url_public  %>" data-num-posts="5" data-width="900"></div>
 </article>
 </div>
 </script>
