@@ -13,7 +13,13 @@ var App = new (Backbone.Router.extend({
      },
 
   initialize: function(){
-	
+		(function(d, s, id) {
+		  var js, fjs = d.getElementsByTagName(s)[0];
+		  if (d.getElementById(id)) return;
+		  js = d.createElement(s); js.id = id;
+		  js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=595636333827563";
+		  fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
 
   },
 
@@ -96,13 +102,7 @@ var App = new (Backbone.Router.extend({
 		$(this).text(day + '/' + month + '/' + year);
 	});
 	
-	(function(d, s, id) {
-		  var js, fjs = d.getElementsByTagName(s)[0];
-		  if (d.getElementById(id)) return;
-		  js = d.createElement(s); js.id = id;
-		  js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=595636333827563";
-		  fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));
+
 		
 	 var modelSocialShare = new SocialSharing({readUrl: entrada.get("url_public"), name: entrada.get("titulo"), message: entrada.get("header")});
      this.socialSharingView = new SocialSharingView({model: modelSocialShare});
