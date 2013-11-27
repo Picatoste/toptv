@@ -519,7 +519,7 @@ Otros: <a href="http://www.genbetadev.com/desarrollo-web/patron-de-diseno-mvc-de
 	<imagen>img/knockout.png</imagen>
 	 <section>
 		<![CDATA[
-		<p>
+		<p  width="244px" >
 			<img align="left" border="0" src="img/knockout_2.png" width="244px" height="70px">
 			Página oficial: <a href="http://knockoutjs.com/">http://knockoutjs.com/</a>
 		</p>
@@ -531,7 +531,7 @@ Otros: <a href="http://www.genbetadev.com/desarrollo-web/patron-de-diseno-mvc-de
 			Cualquier cambio en el Modelo advierte al ModeloVista que modifica la Vista, y viceversa. Con este flujo, la Vista y el Modelo estarán siempre sincronizados.
 			Un elemento importante del patrón es el Binding, que es el encargado de la comunicación bidireccional (sí se quiere). El binding se realiza en propiedades y/o metodos de la VistaModelo con los elementos del DOM. Para tal fin utilizará el patrón observador.
 		</p>
-		<p>
+		<p width="415px">
 			<img align="left" border="0" src="img/knockout_3.jpg" width="415px" height="303px">
 		</p>
 		<p>
@@ -561,29 +561,29 @@ Otros: <a href="http://www.genbetadev.com/desarrollo-web/patron-de-diseno-mvc-de
 		</p>
 		<p>
 			<pre class="brush: html;">
-				<html lang="en">
-				    <head>
-				        <meta charset="utf-8" />
-				        <title></title>
-				        <script type="text/javascript" src="js/knockout-3.0.0.js"></script>
-				    </head>
-				    <body>
-				        <h1>Ejemplo MVVM</h1>
-				        <ul>
-				          <li>El nombre es <span  data-bind="text:nombre"></span></li>
-				            <li>El apellido es <span  data-bind="text:apellidos"></span></li>
-				            <li>El edad es <span  data-bind="text:edad"></span></li>
-				        </ul>
-				          <script type="text/javascript">
+				&lt;html lang="en"&gt;
+				    &lt;head&gt;
+				        &lt;meta charset="utf-8" /&gt;
+				        &lt;title&gt;&lt;/title&gt;
+				        &lt;script type="text/javascript" src="js/knockout-3.0.0.js"&gt;&lt;/script&gt;
+				    &lt;/head&gt;
+				    &lt;body&gt;
+				        &lt;h1&gt;Ejemplo MVVM&lt;/h1&gt;
+				        &lt;ul&gt;
+				          &lt;li&gt;El nombre es &lt;span  data-bind="text:nombre"&gt;&lt;/span&gt;&lt;/li&gt;
+				            &lt;li&gt;El apellido es &lt;span  data-bind="text:apellidos"&gt;&lt;/span&gt;&lt;/li&gt;
+				            &lt;li&gt;El edad es &lt;span  data-bind="text:edad"&gt;&lt;/span&gt;&lt;/li&gt;
+				        &lt;/ul&gt;
+				          &lt;script type="text/javascript"&gt;
 				            var PersonaViewModel = {
 				                nombre: "Juan Pablo",
 				                apellidos: "Pérez Nuñez",
 				                edad: 1
 				                };
 				            ko.applyBindings(PersonaViewModel);
-				        </script>
-				    </body>
-				</html>
+				        &lt;/script&gt;
+				    &lt;/body&gt;
+				&lt;/html&gt;
 			</pre>
 		</p>
 		<p>
@@ -608,7 +608,7 @@ Otros: <a href="http://www.genbetadev.com/desarrollo-web/patron-de-diseno-mvc-de
 		<p>
 			El resultado visual seria el siguiente:
 		</p>
-		<p>
+		<p  width="351px">
 			<img align="left" border="0" src="img/knockout_4.png" width="351px" height="215px">
 		</p>
 		<p>
@@ -626,33 +626,33 @@ Otros: <a href="http://www.genbetadev.com/desarrollo-web/patron-de-diseno-mvc-de
 		</p>
 		<p>
 			<pre class="brush: html;">
-				<html lang="en">
-				    <head>
-				        <meta charset="utf-8" />
-				        <title></title>
-				            <script type="text/javascript" src="js/knockout-2.1.0.js"></script>
-				    </head>
-				    <body>
-				        <h1>Ejemplo MVVM</h1>
-				        <ul>
-				            <li>El nombre es <span  data-bind="text:nombre"></span></li>
-				            <li>El apellido es <span  data-bind="text:apellidos"></span></li>
-				            <li>El edad es <span  data-bind="text:edad"></span></li>
-				        </ul>
-				      <input  data-bind="value:edad" type="number">
-				        <script type="text/javascript">
+				&lt;html lang="en"&gt;
+				    &lt;head&gt;
+				        &lt;meta charset="utf-8" /&gt;
+				        &lt;title&gt;&lt;/title&gt;
+				            &lt;script type="text/javascript" src="js/knockout-2.1.0.js"&gt;&lt;/script&gt;
+				    &lt;/head&gt;
+				    &lt;body&gt;
+				        &lt;h1&gt;Ejemplo MVVM&lt;/h1&gt;
+				        &lt;ul&gt;
+				            &lt;li&gt;El nombre es &lt;span  data-bind="text:nombre"&gt;&lt;/span&gt;&lt;/li&gt;
+				            &lt;li&gt;El apellido es &lt;span  data-bind="text:apellidos"&gt;&lt;/span&gt;&lt;/li&gt;
+				            &lt;li&gt;El edad es &lt;span  data-bind="text:edad"&gt;&lt;/span&gt;&lt;/li&gt;
+				        &lt;/ul&gt;
+				      &lt;input  data-bind="value:edad" type="number"&gt;
+				        &lt;script type="text/javascript"&gt;
 				            var PersonaViewModel = {
 				                nombre: "Juan Pablo",
 				                apellidos: "Pérez Nuñez",
 				                edad: ko.observable(1)
 				                };
 				            ko.applyBindings(PersonaViewModel);
-				        </script>
-				    </body>
-				</html>
+				        &lt;/script&gt;
+				    &lt;/body&gt;
+				&lt;/html&gt;
 			</pre>
 		</p>
-		<p>
+		<p width="365px">
 			<img align="left" border="0" src="img/knockout_5.png" width="365px" height="240px">
 		</p>
 		<p>
