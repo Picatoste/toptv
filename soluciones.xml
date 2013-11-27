@@ -519,7 +519,7 @@ Otros: <a href="http://www.genbetadev.com/desarrollo-web/patron-de-diseno-mvc-de
 	<imagen>img/knockout.png</imagen>
 	 <section>
 		<![CDATA[
-		<p  width="244px"  height="70px" >
+		<p  style="width:244px;height:70px;" >
 			<img align="left" border="0" src="img/knockout_2.png" width="244px" height="70px">
 		</p>
 		<p>
@@ -533,7 +533,7 @@ Otros: <a href="http://www.genbetadev.com/desarrollo-web/patron-de-diseno-mvc-de
 			Cualquier cambio en el Modelo advierte al ModeloVista que modifica la Vista, y viceversa. Con este flujo, la Vista y el Modelo estarán siempre sincronizados.
 			Un elemento importante del patrón es el Binding, que es el encargado de la comunicación bidireccional (sí se quiere). El binding se realiza en propiedades y/o metodos de la VistaModelo con los elementos del DOM. Para tal fin utilizará el patrón observador.
 		</p>
-		<p width="415px" height="303px">
+		<p style="width:415px;height:303px;">
 			<img align="left" border="0" src="img/knockout_3.jpg" width="415px" height="303px">
 		</p>
 		<p>
@@ -610,7 +610,7 @@ Otros: <a href="http://www.genbetadev.com/desarrollo-web/patron-de-diseno-mvc-de
 		<p>
 			El resultado visual seria el siguiente:
 		</p>
-		<p  width="351px" height="215px">
+		<p  style="width:351px;height:215px;">
 			<img align="left" border="0" src="img/knockout_4.png" width="351px" height="215px">
 		</p>
 		<p>
@@ -654,7 +654,7 @@ Otros: <a href="http://www.genbetadev.com/desarrollo-web/patron-de-diseno-mvc-de
 				&lt;/html&gt;
 			</pre>
 		</p>
-		<p width="365px"  height="240px">
+		<p style="width:365px;height:240px;">
 			<img align="left" border="0" src="img/knockout_5.png" width="365px" height="240px">
 		</p>
 		<p>
