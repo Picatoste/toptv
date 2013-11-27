@@ -387,7 +387,6 @@ Otros: <a href="http://www.genbetadev.com/desarrollo-web/patron-de-diseno-mvc-de
 	]]>
 	</footer>
 </solucion>
-
 <solucion>
 	 <id>14</id>
 	 <titulo>Solución 14 - WP8 - Crear Tile a partir de UserControl</titulo>
@@ -507,6 +506,182 @@ Otros: <a href="http://www.genbetadev.com/desarrollo-web/patron-de-diseno-mvc-de
 	</section> 
 	<footer>
 	<![CDATA[
+	]]>
+	</footer>
+</solucion>
+<solucion>
+	 <id>15</id>
+	 <titulo>Solución 15 - Knockout.js y el patrón MVVM</titulo>
+	 <autor>David Benito Ramírez</autor>
+	 <url_public>http://solucionesdbr.es/pages/solucion-15-knockout-y-patron-mvvm.html</url_public>
+	 <fecha>20132711</fecha>		 
+	<header>Knockout.js es una de la más utilizadas bibliotecas javascript de los últimos tiempos que se basa en el patrón MVVM (Modelo-Vista-ModeloVista). En este articulo encontraremos la definición del patrón MVVM y dos ejemplos sencillos para entender de forma muy fácil Knockout.js.</header>
+	<imagen>img/knockout.png</imagen>
+	 <section>
+		<![CDATA[
+		<p>
+			<img align="left" border="0" src="img/knockout_2.png">
+			Página oficial: <a href="http://knockoutjs.com/">http://knockoutjs.com/</a>
+		</p>
+		<p>
+			Para entender Knockout.js y su razón de existir hay que entender primero el patrón MVVM.
+		</p>
+		<p>
+			El <strong>patrón de MVVM</strong> se basa en tener una Vista (capa de presentación), un Modelo (modelo de datos), y un ModeloVista que proporcionará la sincronización entre el Modelo y la Vista.
+			Cualquier cambio en el Modelo advierte al ModeloVista que modifica la Vista, y viceversa. Con este flujo, la Vista y el Modelo estarán siempre sincronizados.
+			Un elemento importante del patrón es el Binding, que es el encargado de la comunicación bidireccional (sí se quiere). El binding se realiza en propiedades y/o metodos de la VistaModelo con los elementos del DOM. Para tal fin utilizará el patrón observador.
+		</p>
+		<p>
+			<img align="left" border="0" src="img/knockout_3.jpg">
+		</p>
+		<p>
+			Volviendo a <strong>knockout.js</strong>...
+		</p>
+		<p>
+			Entre las cosas que permite:
+		</p>
+		<ul>
+			<li>
+				Realizar Binding Declarativos.
+			</li>
+			<li>
+				Resfresco automático de los elementos de la Vista. Cuando se actualiza el ModeloVista, nuestra Vista se actualiza automáticamente.
+			<li>
+				Tracking de Dependencias, detecta los cambios realizados en la Vista o en el Modelo y es capaz de propagarlos.
+			</li>
+			<li>
+				Plantillas, permite generar rapidamente plantillas en función de los datos del ModeloVista.
+			</li>
+		</ul>
+		<p>
+			Además, es open source (gratis), es compatible con cualquier framework javascript (p.e JQuery), y es liviano (solo 40k minimizado) y da soporte para IE6+, Firefox 2+.Chrome, Opera y Safari (versión móvil y de escritorio) y totalmente documentada.
+		</p>
+		<p>
+			Pongamos un ejemplo a modo de explicación de MVVM y Knockout.js:
+		</p>
+		<p>
+			<pre class="brush: xml;">
+				<!DOCTYPE html>
+				<html lang="en">
+				    <head>
+				        <meta charset="utf-8" />
+				        <title></title>
+				        <script type="text/javascript" src="js/knockout-3.0.0.js"></script>
+				    </head>
+				    <body>
+				        <h1>Ejemplo MVVM</h1>
+				        <ul>
+				          <li>El nombre es <span  data-bind="text:nombre"></span></li>
+				            <li>El apellido es <span  data-bind="text:apellidos"></span></li>
+				            <li>El edad es <span  data-bind="text:edad"></span></li>
+				        </ul>
+				          <script type="text/javascript">
+				            var PersonaViewModel = {
+				                nombre: "Juan Pablo",
+				                apellidos: "Pérez Nuñez",
+				                edad: 1
+				                };
+				            ko.applyBindings(PersonaViewModel);
+				        </script>
+				    </body>
+				</html>
+			</pre>
+		</p>
+		<p>
+			Analicemos el código:
+		</p>
+		<p>
+			<ul>
+				<li>
+					Tenemos en el código el enlace al javascript con la biblioteca knockout-3.0.0.js.
+				</li>
+				<li>
+					Un bloque de código javascript con la creación de una VistaModelo de knockout que, además, se le pasa un Modelo con tres atributos (el Modelo se crea en ejecución y se asigna al ModeloVista).
+				</li>
+				<li>
+					 Tres controles <strong>span</strong> tienen el atributo <strong>data-bind</strong> (aceptado en HTML5) que contiene el nombre de la propiedades del modelo.   Podemos ver que la Vista sería la propia página HTML
+				</li>
+				<li>
+					Se aprecia que se distribuyen los datos del Modelo enlazando propiedades en los controles con el atributo <strong>data-bind</strong>. Y se "confirma" estos enlaces gracias al método <strong>applyBindings()</strong>.
+				</li>
+			</ul>
+		</p>
+		<p>
+			El resultado visual seria el siguiente:
+		</p>
+		<p>
+			<img align="left" border="0" src="img/knockout_4.png">
+		</p>
+		<p>
+			El anterior ejemplo sería un binding sencillo, vamos a ampliar el ejemplo para convertirlo en un binding bidireccional:
+		</p>
+		<p>
+			<ul>
+				<li>
+					Incluimos un <strong>input text</strong>, que al enlazarlo con el ViewModel, cualquier cambio que se haga se verá reflejado por propagación en la Vista y en el Modelo.
+				</li>
+				<li>
+					Para ello modificaremos el ViewModel, la propiedad 'edad' para que sea <strong>observable</strong>, dotando de bidireccionalidad el control que se asocie a esta propiedad, en este caso el nuevo input text.
+				</li>
+			</ul>
+		</p>
+		<p>
+			<pre class="brush: xml;">
+				<!DOCTYPE html>
+				<html lang="en">
+				    <head>
+				        <meta charset="utf-8" />
+				        <title></title>
+				            <script type="text/javascript" src="js/knockout-2.1.0.js"></script>
+				    </head>
+				    <body>
+				        <h1>Ejemplo MVVM</h1>
+				        <ul>
+				            <li>El nombre es <span  data-bind="text:nombre"></span></li>
+				            <li>El apellido es <span  data-bind="text:apellidos"></span></li>
+				            <li>El edad es <span  data-bind="text:edad"></span></li>
+				        </ul>
+				      <input  data-bind="value:edad" type="number">
+				        <script type="text/javascript">
+				            var PersonaViewModel = {
+				                nombre: "Juan Pablo",
+				                apellidos: "Pérez Nuñez",
+				                edad: ko.observable(1)
+				                };
+				            ko.applyBindings(PersonaViewModel);
+				        </script>
+				    </body>
+				</html>
+			</pre>
+		</p>
+		<p>
+			<img align="left" border="0" src="img/knockout_5.png">
+		</p>
+		<p>
+			Cada vez que modifiquemos el input text se modificará el span que contiene el valor de la edad.
+		</p>
+]]>
+	</section> 
+	<footer>
+	<![CDATA[
+		<p>
+			El ejemplo en ejecución se encuentra en: <a href="http://solucionesdbr.es/examples/knockout_sample1.html">http://solucionesdbr.es/examples/knockout_sample1.html</a>
+		</p>
+		<p>
+			Fuente:
+		</p>
+		<p>
+			<a href="http://maromasdigitales.net/2010/05/patron-mvvm-explicado/">http://maromasdigitales.net/2010/05/patron-mvvm-explicado/</a>
+		</p>
+		<p>
+			<a href="http://geeks.ms/blogs/gperez/archive/2012/08/13/tutorial-comenzado-con-mvvm-y-knockout-js.aspx">http://geeks.ms/blogs/gperez/archive/2012/08/13/tutorial-comenzado-con-mvvm-y-knockout-js.aspx</a>
+		</p>
+		<p>
+			<a href="http://knockoutjs.com/documentation/template-binding.html">http://knockoutjs.com/documentation/template-binding.html</a>
+		</p>
+		<p>
+			<a href="http://knockoutjs.com/documentation/observables.html#mvvm_and_view_models">http://knockoutjs.com/documentation/observables.html#mvvm_and_view_models</a>
+		</p>
 	]]>
 	</footer>
 </solucion>
