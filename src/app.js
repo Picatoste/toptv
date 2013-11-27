@@ -50,7 +50,7 @@ var App = new (Backbone.Router.extend({
   },
 
   index: function(){
-		this.show(14);
+		this.show(15);
 		$("#app-aboutme").fadeOut(2000, function(x){ $("#main").attr("class", "main wrapper clearfix");});
 		$("#app-main").fadeIn(4000);
   },

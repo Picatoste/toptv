@@ -520,7 +520,7 @@ Otros: <a href="http://www.genbetadev.com/desarrollo-web/patron-de-diseno-mvc-de
 	 <section>
 		<![CDATA[
 		<p>
-			<img align="left" border="0" src="img/knockout_2.png">
+			<img align="left" border="0" src="img/knockout_2.png" width="244px" height="70px">
 			Página oficial: <a href="http://knockoutjs.com/">http://knockoutjs.com/</a>
 		</p>
 		<p>
@@ -532,7 +532,7 @@ Otros: <a href="http://www.genbetadev.com/desarrollo-web/patron-de-diseno-mvc-de
 			Un elemento importante del patrón es el Binding, que es el encargado de la comunicación bidireccional (sí se quiere). El binding se realiza en propiedades y/o metodos de la VistaModelo con los elementos del DOM. Para tal fin utilizará el patrón observador.
 		</p>
 		<p>
-			<img align="left" border="0" src="img/knockout_3.jpg">
+			<img align="left" border="0" src="img/knockout_3.jpg" width="415px" height="303px">
 		</p>
 		<p>
 			Volviendo a <strong>knockout.js</strong>...
@@ -560,8 +560,7 @@ Otros: <a href="http://www.genbetadev.com/desarrollo-web/patron-de-diseno-mvc-de
 			Pongamos un ejemplo a modo de explicación de MVVM y Knockout.js:
 		</p>
 		<p>
-			<pre class="brush: xml;">
-				<!DOCTYPE html>
+			<pre class="brush: html;">
 				<html lang="en">
 				    <head>
 				        <meta charset="utf-8" />
@@ -610,7 +609,7 @@ Otros: <a href="http://www.genbetadev.com/desarrollo-web/patron-de-diseno-mvc-de
 			El resultado visual seria el siguiente:
 		</p>
 		<p>
-			<img align="left" border="0" src="img/knockout_4.png">
+			<img align="left" border="0" src="img/knockout_4.png" width="351px" height="215px">
 		</p>
 		<p>
 			El anterior ejemplo sería un binding sencillo, vamos a ampliar el ejemplo para convertirlo en un binding bidireccional:
@@ -626,8 +625,7 @@ Otros: <a href="http://www.genbetadev.com/desarrollo-web/patron-de-diseno-mvc-de
 			</ul>
 		</p>
 		<p>
-			<pre class="brush: xml;">
-				<!DOCTYPE html>
+			<pre class="brush: html;">
 				<html lang="en">
 				    <head>
 				        <meta charset="utf-8" />
@@ -655,7 +653,7 @@ Otros: <a href="http://www.genbetadev.com/desarrollo-web/patron-de-diseno-mvc-de
 			</pre>
 		</p>
 		<p>
-			<img align="left" border="0" src="img/knockout_5.png">
+			<img align="left" border="0" src="img/knockout_5.png" width="365px" height="240px">
 		</p>
 		<p>
 			Cada vez que modifiquemos el input text se modificará el span que contiene el valor de la edad.
