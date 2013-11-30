@@ -139,7 +139,6 @@ var EntradaList = Backbone.Collection.extend({
 				collection.push(EntradaItemAdd, '');			
 			});
 			
-			collection = new Backbone.Collection(collection.first(5));
 			collection.sort_key = "fecha";
             collection.sort();
 			
