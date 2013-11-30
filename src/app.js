@@ -76,7 +76,7 @@ var App = new (Backbone.Router.extend({
     if(!this.activeList)
       this.activeList = new EntradaList(this.entradasList.models);
 	 
-	 this.entradasList = this.activeList
+	 this.entradasList = this.activeList.first(nelements);
     var entradasView = new EntradaListaView({collection: this.activeList});
 
     //generamos vista
