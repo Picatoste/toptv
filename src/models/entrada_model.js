@@ -77,7 +77,7 @@ var EntradaList = Backbone.Collection.extend({
 		}
 	},
 
-	search: function(letters, n)
+	search: function(letters)
 	{
 		if(letters === "") return this;
 
@@ -93,7 +93,7 @@ var EntradaList = Backbone.Collection.extend({
 		});
 
 		//create new coll con los elementos filtrados
-		var coll = new EntradaList(filteredList).first(n);
+		var coll = new EntradaList(filteredList);
 
 		return coll;
 
