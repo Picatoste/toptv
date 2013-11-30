@@ -89,7 +89,7 @@ var App = new (Backbone.Router.extend({
 
     //pedimos datos al server
     this.activeList.fetch();
-	this.activeList = this.activeList.first(nelements);
+
     //render
     //no haria falta si cargamos del server ya que reaccionamos a los eventos :)
     entradasView.render();
@@ -133,7 +133,7 @@ var App = new (Backbone.Router.extend({
     var field = this.activeList.sortField;
     var order = this.activeList.sortOrder;
 
-    this.activeList = this.entradasList.search(this.filter, n);
+    this.activeList = this.entradasList.search(this.filter, nelements);
 
     //sort results
     this.activeList.sortField = field;
