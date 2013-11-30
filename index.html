@@ -130,28 +130,21 @@
 	<script type="text/template" id="searchTemplate">
 	<h2 class='titulo_header'>Otras soluciones</h2>
 	<p>
-		<strong>Buscar</strong>
-		&nbsp;&nbsp;&nbsp;&nbsp;
-		
-		Título o Autor: <input id="titulo" onKeyUp="onTituloFilter()" value='<%= filter %>'/>
-		
-		&nbsp;&nbsp;&nbsp;&nbsp;
-		
-		<strong>Ordenar</strong>
+		<input id="titulo" onKeyUp="onTituloFilter()" value='<%= filter %>'/>
+		<strong>Buscar</strong>		
+	<!--<strong>Ordenar</strong>
 		<select onChange="onChangeSortOrder()" id="sortField">
 			<option <% if(sortField === "titulo"){ %> selected <% } %> value="titulo">Titulo</option>
 			<option <% if(sortField === "autor"){ %> selected <% } %> value="autor">Autor</option>
-			<!-- podríamos ordenar por editorial tambien-->
-			<!-- <option value="autor">Editorial</option> -->
 		</select>
 		<select onChange="onChangeSortOrder()" id="sortOrder">
 			<option <% if(sortOrder === "asc"){ %> selected <% } %> value="asc">Ascendente</option>
 			<option <% if(sortOrder === "desc"){ %> selected <% } %> value="desc">Descendente</option>
-		</select>
+		</select>-->
 	</p>
 </script>
 <script type="text/template" id="itemTemplate">
-	<div class='glow'>
+	<div class='glow aside_item'>
 	<a style="text-decoration:none;" href='#/solucion/<%= id %>'>
 	<div class='article_font' style='margin-bottom:10px;'>
 		<div class='left'>
@@ -230,10 +223,10 @@
 		App.start();
 		
 		//ui event listeners
-		onChangeSortOrder = function()
-		{
-			App.sortBy($('#sortField').val(), $('#sortOrder').val());
-		}
+		//nChangeSortOrder = function()
+		//{
+		//	App.sortBy($('#sortField').val(), $('#sortOrder').val());
+		//}
 		
 		//ui event listeners
 		onTituloFilter=function()

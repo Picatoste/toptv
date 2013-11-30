@@ -132,7 +132,7 @@ var App = new (Backbone.Router.extend({
     var field = this.activeList.sortField;
     var order = this.activeList.sortOrder;
 
-    this.activeList = this.entradasList.search(this.filter);
+    this.activeList = this.entradasList.search(this.filter, 5);
 
     //sort results
     this.activeList.sortField = field;

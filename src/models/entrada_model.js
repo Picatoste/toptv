@@ -77,7 +77,7 @@ var EntradaList = Backbone.Collection.extend({
 		}
 	},
 
-	search: function(letters)
+	search: function(letters, nelements)
 	{
 		if(letters === "") return this;
 
@@ -87,13 +87,13 @@ var EntradaList = Backbone.Collection.extend({
 		//iteramos la coll
 		var filteredList = this.filter(function(data)
 		{
-			return (pattern.test( data.get('autor') + "  "+data.get('titulo') ));
+			return (pattern.test( data.get('autor') + "  " + data.get('titulo') ));
 			//podríamos filtrar por editorial también
 			//return ( pattern.test(data.get('autor')) || pattern.test(data.get('titulo')) );// || pattern.test(data.get('fecha')) );
 		});
 
 		//create new coll con los elementos filtrados
-		var coll = new EntradaList(filteredList);
+		var coll = new EntradaList(filteredList.first(nelements);
 
 		return coll;
 
