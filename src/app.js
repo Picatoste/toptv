@@ -107,7 +107,11 @@ var App = new (Backbone.Router.extend({
 	 var modelSocialShare = new SocialSharing({readUrl: entrada.get("url_public"), name: entrada.get("titulo"), message: entrada.get("header")});
      this.socialSharingView = new SocialSharingView({model: modelSocialShare});
      this.socialSharingView.render();
-	 FB.XFBML.parse(); 
+	 
+	 if (typeof(FB) != 'undefined' && FB != null ) {
+		FB.XFBML.parse(); 
+	 }
+
 
   },
 
