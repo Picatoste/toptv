@@ -59,6 +59,7 @@ var EntradaList = Backbone.Collection.extend({
 	model: EntradaItem,
 	sortOrder: "desc",
 	sortField: "fecha",
+	nelements: 5,
 
 	sortByField: function (fieldName) {
             this.sort_key = fieldName;
@@ -100,7 +101,7 @@ var EntradaList = Backbone.Collection.extend({
 	},
 
 	
-  fetch: function(options, n) {
+  fetch: function(options) {
   			options = options ? _.clone(options) : {};
   			var collection = this;
   			var success = options.success;
@@ -138,7 +139,8 @@ var EntradaList = Backbone.Collection.extend({
 				EntradaItemAdd.set("url_public", json.solucion.url_public);
 				collection.push(EntradaItemAdd, '');			
 			});
-			collection = collection.first(n);
+			
+			collection = new Backbone.Collection(collection.first(nelements));
 			collection.sort_key = "fecha";
             collection.sort();
 			

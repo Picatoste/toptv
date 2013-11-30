@@ -88,7 +88,7 @@ var App = new (Backbone.Router.extend({
     $('#app-side').html(entradasView.el);
 
     //pedimos datos al server
-    this.activeList.fetch(null, nelements);
+    this.activeList.fetch();
 	
     //render
     //no haria falta si cargamos del server ya que reaccionamos a los eventos :)
