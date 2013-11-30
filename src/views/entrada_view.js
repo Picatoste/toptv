@@ -59,7 +59,7 @@ EntradaListaView = Backbone.View.extend({
 		//renderizar vista cuando la coll se resetee (datos nuevos)
 		//o haya un evento sort (ordenar)
 		//this.listenTo(this.collection, "reset", this.render);
-		this.listenTo(this.collection, "sort", this.render);
+		//this.listenTo(this.collection, "sort", this.render);
 		// this.collection.on("reset", this.render, this);
 		// this.collection.on("sort", this.render, this);
 		//this.collection.on("add", this.addOne, this);
