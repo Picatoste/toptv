@@ -76,7 +76,7 @@ var App = new (Backbone.Router.extend({
     if(!this.activeList)
       this.activeList = new EntradaList(this.entradasList.models);
 	 
-	 this.entradasList = this.activeList.first(nelements);
+	 this.entradasList = this.activeList;
     var entradasView = new EntradaListaView({collection: this.activeList});
 
     //generamos vista
@@ -89,7 +89,7 @@ var App = new (Backbone.Router.extend({
 
     //pedimos datos al server
     this.activeList.fetch();
-
+	this.activeList.first(nelements);
     //render
     //no haria falta si cargamos del server ya que reaccionamos a los eventos :)
     entradasView.render();
