@@ -2,7 +2,7 @@
 /**
  * App 
  */
- 
+ var nelements = 0
 var App = new (Backbone.Router.extend({
 
   routes: {
@@ -23,11 +23,12 @@ var App = new (Backbone.Router.extend({
 
   },
 
-  start: function(){
+  start: function(n){
 
     //creamos lista de entradas sin filtrar
     //mediante bootstrapping :)
-    this.entradasList = new EntradaList();
+	nelements = n
+    this.entradasList = new EntradaList().first(n);
     
     //lista filtrada que se usará para generar las vistas
     this.activeList = null;
@@ -132,7 +133,7 @@ var App = new (Backbone.Router.extend({
     var field = this.activeList.sortField;
     var order = this.activeList.sortOrder;
 
-    this.activeList = this.entradasList.search(this.filter, 5);
+    this.activeList = this.entradasList.search(this.filter, n);
 
     //sort results
     this.activeList.sortField = field;

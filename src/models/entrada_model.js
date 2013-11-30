@@ -93,7 +93,7 @@ var EntradaList = Backbone.Collection.extend({
 		});
 
 		//create new coll con los elementos filtrados
-		var coll = new EntradaList(filteredList.first(nelements));
+		var coll = new EntradaList(filteredList).first(nelements);
 
 		return coll;
 
