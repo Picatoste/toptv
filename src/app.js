@@ -28,7 +28,7 @@ var App = new (Backbone.Router.extend({
     //creamos lista de entradas sin filtrar
     //mediante bootstrapping :)
 	nelements = n
-    this.entradasList = new EntradaList().first(n);
+    this.entradasList = new EntradaList();
     
     //lista filtrada que se usará para generar las vistas
     this.activeList = null;
@@ -88,7 +88,7 @@ var App = new (Backbone.Router.extend({
     $('#app-side').html(entradasView.el);
 
     //pedimos datos al server
-    this.activeList.fetch();
+    this.activeList.fetch(null, n);
 	this.activeList = this.activeList.first(nelements);
     //render
     //no haria falta si cargamos del server ya que reaccionamos a los eventos :)

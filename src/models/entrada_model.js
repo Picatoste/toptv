@@ -100,7 +100,7 @@ var EntradaList = Backbone.Collection.extend({
 	},
 
 	
-  fetch: function(options) {
+  fetch: function(options, n) {
   			options = options ? _.clone(options) : {};
   			var collection = this;
   			var success = options.success;
@@ -138,7 +138,7 @@ var EntradaList = Backbone.Collection.extend({
 				EntradaItemAdd.set("url_public", json.solucion.url_public);
 				collection.push(EntradaItemAdd, '');			
 			});
-			
+			collection = collection.first(n);
 			collection.sort_key = "fecha";
             collection.sort();
 			
