@@ -77,6 +77,7 @@ EntradaListaView = Backbone.View.extend({
 	{
 		this.$el.empty();
 		this.addAll();
+		this.slice(-5);
 	},
 
 	addOne: function(item)
