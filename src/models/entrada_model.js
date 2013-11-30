@@ -59,7 +59,7 @@ var EntradaList = Backbone.Collection.extend({
 	model: EntradaItem,
 	sortOrder: "desc",
 	sortField: "fecha",
-	nelements: 5,
+	elements: 5,
 
 	sortByField: function (fieldName) {
             this.sort_key = fieldName;
@@ -78,7 +78,7 @@ var EntradaList = Backbone.Collection.extend({
 		}
 	},
 
-	search: function(letters, nelements)
+	search: function(letters)
 	{
 		if(letters === "") return this;
 
@@ -94,7 +94,7 @@ var EntradaList = Backbone.Collection.extend({
 		});
 
 		//create new coll con los elementos filtrados
-		var coll = new EntradaList(filteredList).first(nelements);
+		var coll = new EntradaList(filteredList).first(this.elements);
 
 		return coll;
 
@@ -140,7 +140,7 @@ var EntradaList = Backbone.Collection.extend({
 				collection.push(EntradaItemAdd, '');			
 			});
 			
-			collection = new Backbone.Collection(collection.first(nelements));
+			collection = new Backbone.Collection(collection.first(elements));
 			collection.sort_key = "fecha";
             collection.sort();
 			

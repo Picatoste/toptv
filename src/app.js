@@ -82,7 +82,7 @@ var App = new (Backbone.Router.extend({
     //generamos vista
     $('#ui').html(_.template($('#searchTemplate').html(),
       //escape to prevent XSS attack
-      { filter: _.escape(this.filter), sortOrder: this.activeList.sortOrder, sortField: this.activeList.sortField }
+  { filter: _.escape(this.filter), sortOrder: this.activeList.sortOrder, sortField: this.activeList.sortField, elements: nelements }
     ));
     
     $('#app-side').html(entradasView.el);
@@ -133,7 +133,7 @@ var App = new (Backbone.Router.extend({
     var field = this.activeList.sortField;
     var order = this.activeList.sortOrder;
 
-    this.activeList = this.entradasList.search(this.filter, nelements);
+    this.activeList = this.entradasList.search(this.filter);
 
     //sort results
     this.activeList.sortField = field;
