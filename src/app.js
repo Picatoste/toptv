@@ -7,7 +7,7 @@ var App = new (Backbone.Router.extend({
 
   routes: {
     "solucion/:id": "show", //matches "solucion/1" y "solucion/1/"
-    "solucion/all": "showall", //matches "solucion/1" y "solucion/1/"
+    "todas_soluciones(/)": "showall", //matches "todas_soluciones"
     "soluciones(/)": "index", //matches "soluciones" y "soluciones/"
 	"aboutme": "aboutme", //matches "aboutme"
     "*any" : "redirect" //matches anything else *wildcard ;)
