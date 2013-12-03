@@ -38,6 +38,24 @@ var App = new (Backbone.Router.extend({
 
     Backbone.history.start();
   },
+  end: function()
+  {
+	
+	//$('#buttonLikeIt').append('<fb:like href="' + encodeURIComponent(document.URL) + '" send="true" width="450" show_faces="true" font="tahoma"></fb:like>');
+	$(".fecha").each(function( index ) {
+		var dateString = $.trim($(this).text());
+		var year = dateString.substring(0,4);
+		var month = dateString.substring(4,6);
+		var day = dateString.substring(6,8);
+		$(this).text(day + '/' + month + '/' + year);
+	});
+	
+	 
+	 if (typeof(FB) != 'undefined' && FB != null ) {
+		FB.XFBML.parse(); 
+	 }
+
+  },
 
   redirect: function()
   {
@@ -56,23 +74,39 @@ var App = new (Backbone.Router.extend({
 		$("#app-aboutme").fadeOut(2000, function(x){ $("#main").attr("class", "main wrapper clearfix");});
 		$("#app-main").fadeIn(4000);
   },
-  showall: function(id)
+  showall: function()
   {
+	this.showSearch();
+	
+	$("html, body").animate({ scrollTop: 0 }, "slow");
+    //creamos objetos
+    var entradaFicha = new EntradaItem({id: id});
+    var entradaFichaView = new EntradaListaFichaView({model: entradaFicha});
+
+    //limpiamos ui
+    $('#ui').empty();
+
+    //añadimos vista ficha
+    $('#app').html(entradaFichaView.el);
+
+    //pedimos datos al server
+    entradaFicha.fetch({id: id});
+	this.end();
   
   },
-  showHistoric: function()
+  showSearch: function()
   {
 	 //initialize
     if(!this.activeList)
       this.activeList = new EntradaList(this.entradasList.models);
 	 
-	 this.entradasList = this.activeList;
+	this.entradasList = this.activeList;
     var entradasView = new EntradaListaView({collection: this.activeList});
 
     //generamos vista
     $('#ui').html(_.template($('#searchTemplate').html(),
       //escape to prevent XSS attack
-  { filter: _.escape(this.filter), sortOrder: this.activeList.sortOrder, sortField: this.activeList.sortField, elements: nelements }
+      { filter: _.escape(this.filter), sortOrder: this.activeList.sortOrder, sortField: this.activeList.sortField, elements: nelements }
     ));
     
     $('#app-side').html(entradasView.el);
@@ -85,6 +119,8 @@ var App = new (Backbone.Router.extend({
   },
   show: function(id)
   {
+	this.showSearch();
+	
 	$("html, body").animate({ scrollTop: 0 }, "slow");
     //creamos objetos
     var entrada = new EntradaItem({id: id});
@@ -96,30 +132,14 @@ var App = new (Backbone.Router.extend({
     //añadimos vista ficha
     $('#app').html(entradaView.el);
 
-	this.showHistoric();
     //pedimos datos al server
     entrada.fetch({id: id});
-   
 	
-	//$('#buttonLikeIt').append('<fb:like href="' + encodeURIComponent(document.URL) + '" send="true" width="450" show_faces="true" font="tahoma"></fb:like>');
-	$(".fecha").each(function( index ) {
-		var dateString = $.trim($(this).text());
-		var year = dateString.substring(0,4);
-		var month = dateString.substring(4,6);
-		var day = dateString.substring(6,8);
-		$(this).text(day + '/' + month + '/' + year);
-	});
-	
-
-		
 	 var modelSocialShare = new SocialSharing({readUrl: entrada.get("url_public"), name: entrada.get("titulo"), message: entrada.get("header")});
      this.socialSharingView = new SocialSharingView({model: modelSocialShare});
      this.socialSharingView.render();
 	 
-	 if (typeof(FB) != 'undefined' && FB != null ) {
-		FB.XFBML.parse(); 
-	 }
-
+	this.end();
 
   },
 

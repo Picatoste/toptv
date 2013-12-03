@@ -89,6 +89,39 @@ EntradaListaView = Backbone.View.extend({
 
 });
 
+
+/**
+ * EntradaListaView
+ * Listado de items ficha entrada
+ * encpasulado en <ul></ul>
+ */
+EntradaListaFichaView = Backbone.View.extend({
+
+	initialize: function()
+	{
+
+	},
+
+	addAll: function()
+	{
+		this.collection.forEach(this.addOne, this);
+	},
+
+	render: function()
+	{
+		this.$el.empty();
+		this.addAll();
+	},
+
+	addOne: function(item)
+	{
+		var itemView = new EntradaFichaView({model: item});
+		itemView.render();
+		this.$el.append(itemView.el);
+	}
+
+});
+
 SocialSharingView = Backbone.View.extend({
   el: "#share-item",
  
