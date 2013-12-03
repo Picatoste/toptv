@@ -33,6 +33,7 @@ var App = new (Backbone.Router.extend({
     
     //lista filtrada que se usará para generar las vistas
     this.activeList = null;
+    this.activeFichaList = null;
 
     this.filter='';
 
@@ -80,8 +81,8 @@ var App = new (Backbone.Router.extend({
 	
 	$("html, body").animate({ scrollTop: 0 }, "slow");
     //creamos objetos
-    var entradaFicha = new EntradaItem({id: id});
-    var entradaFichaView = new EntradaListaFichaView({model: entradaFicha});
+	activeFichaList = new EntradaList(this.entradasList.models);
+    var entradaFichaView = new EntradaListaFichaView({collection: this.activeFichaList});
 
     //limpiamos ui
     $('#ui').empty();
@@ -90,7 +91,8 @@ var App = new (Backbone.Router.extend({
     $('#app').html(entradaFichaView.el);
 
     //pedimos datos al server
-    entradaFicha.fetch({id: id});
+    activeFichaList.fetch();
+	entradaFichaView.render();
 	this.end();
   
   },
