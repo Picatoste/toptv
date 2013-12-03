@@ -38,10 +38,10 @@ EntradaFichaView = Backbone.View.extend({
 	render: function()
 	{
 		this.$el.html(_.template($('#fichaTemplate').html(),this.model.attributes));
-		document.title = 'SOLUCIONES.NET por DBR' + this.model.get("titulo");
-		$("meta[property='og\\:title']").attr("content", 'SOLUCIONES .NET por DBR - ' + this.model.get("titulo"));
-		$("meta[property='og\\:description']").attr("content", this.model.get("header"));
-		$("meta[property='og\\:image']").attr("content", document.URL.split("index.html")[0] + $('#imageSolucion').attr('src').trim());
+		//document.title = 'SOLUCIONES.NET por DBR' + this.model.get("titulo");
+		//$("meta[property='og\\:title']").attr("content", 'SOLUCIONES .NET por DBR - ' + this.model.get("titulo"));
+		//$("meta[property='og\\:description']").attr("content", this.model.get("header"));
+		//$("meta[property='og\\:image']").attr("content", document.URL.split("index.html")[0] + $('#imageSolucion').attr('src').trim());
 		
 		SyntaxHighlighter.highlight();	
 	}
