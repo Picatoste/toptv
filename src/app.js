@@ -7,6 +7,7 @@ var App = new (Backbone.Router.extend({
 
   routes: {
     "solucion/:id": "show", //matches "solucion/1" y "solucion/1/"
+    "solucion/all": "showall", //matches "solucion/1" y "solucion/1/"
     "soluciones(/)": "index", //matches "soluciones" y "soluciones/"
 	"aboutme": "aboutme", //matches "aboutme"
     "*any" : "redirect" //matches anything else *wildcard ;)
@@ -55,24 +56,13 @@ var App = new (Backbone.Router.extend({
 		$("#app-aboutme").fadeOut(2000, function(x){ $("#main").attr("class", "main wrapper clearfix");});
 		$("#app-main").fadeIn(4000);
   },
-
-  show: function(id)
+  showall: function(id)
   {
-	$("html, body").animate({ scrollTop: 0 }, "slow");
-    //creamos objetos
-    var entrada = new EntradaItem({id: id});
-    var entradaView = new EntradaFichaView({model: entrada});
-
-    //limpiamos ui
-    $('#ui').empty();
-
-    //añadimos vista ficha
-    $('#app').html(entradaView.el);
-
-    //pedimos datos al server
-    entrada.fetch({id: id});
-    
-    //initialize
+  
+  },
+  showHistoric: function()
+  {
+	 //initialize
     if(!this.activeList)
       this.activeList = new EntradaList(this.entradasList.models);
 	 
@@ -88,11 +78,28 @@ var App = new (Backbone.Router.extend({
     $('#app-side').html(entradasView.el);
 
     //pedimos datos al server
-    this.activeList.fetch();
-	
+    this.activeList.fetch();	
     //render
     //no haria falta si cargamos del server ya que reaccionamos a los eventos :)
     entradasView.render();
+  },
+  show: function(id)
+  {
+	$("html, body").animate({ scrollTop: 0 }, "slow");
+    //creamos objetos
+    var entrada = new EntradaItem({id: id});
+    var entradaView = new EntradaFichaView({model: entrada});
+
+    //limpiamos ui
+    $('#ui').empty();
+
+    //añadimos vista ficha
+    $('#app').html(entradaView.el);
+
+	this.showHistoric();
+    //pedimos datos al server
+    entrada.fetch({id: id});
+   
 	
 	//$('#buttonLikeIt').append('<fb:like href="' + encodeURIComponent(document.URL) + '" send="true" width="450" show_faces="true" font="tahoma"></fb:like>');
 	$(".fecha").each(function( index ) {
