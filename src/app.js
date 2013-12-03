@@ -81,7 +81,7 @@ var App = new (Backbone.Router.extend({
 	
 	$("html, body").animate({ scrollTop: 0 }, "slow");
     //creamos objetos
-	activeFichaList = new EntradaList(this.entradasList.models);
+	this.activeFichaList = new EntradaList(this.entradasList.models);
     var entradaFichaView = new EntradaListaFichaView({collection: this.activeFichaList});
 
     //limpiamos ui
@@ -91,7 +91,7 @@ var App = new (Backbone.Router.extend({
     $('#app').html(entradaFichaView.el);
 
     //pedimos datos al server
-    activeFichaList.fetch();
+    this.activeFichaList.fetch();
 	entradaFichaView.render();
 	this.end();
   
