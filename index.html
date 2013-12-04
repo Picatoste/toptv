@@ -176,36 +176,36 @@
 	<div> 	
  	<article>
 	<header>
-	<h1 class="left titulo_header">
-		<img id="imageSolucion" src='<%= imagen %>'></img>
-		<%= titulo %>
-	</h1>
-	<div class="right" style="margin-top: 20px;"><div class="fb-like" data-href="<%= url_public %>" data-layout="box_count" data-action="like" data-show-faces="true" data-share="false"></div></div>
-<div class="menu_articulo left clear">
-	<div class="left">
-		<a class="selectable" href='#/soluciones/'><img src="img/back_orange.png" title="Volver" 		alt="Volver"></img></a>   
+		<h1 class="left titulo_header">
+			<img id="imageSolucion" src='<%= imagen %>'></img>
+			<%= titulo %>
+		</h1>
+		<div class="right" style="margin-top: 20px;"><div class="fb-like" data-href="<%= url_public %>" data-layout="box_count" data-action="like" data-show-faces="true" data-share="false"></div></div>
+	<div class="menu_articulo left clear">
+		<div class="left">
+			<a class="selectable" href='#/soluciones/'><img src="img/back_orange.png" title="Volver" 		alt="Volver"></img></a>   
+		</div>
+		<div class="left margin_left_10">
+			<img class="right selectable" onclick="javascript:window.print();" src="img/print_orange.png"	title="Imprimir" alt="Imprimir"></img>				  
+		</div>
+		<div class="left margin_left_10"  id="share-item"></div>	
 	</div>
-	<div class="left margin_left_10">
-		<img class="right selectable" onclick="javascript:window.print();" src="img/print_orange.png"	title="Imprimir" alt="Imprimir"></img>				  
-	</div>
-	<div class="left margin_left_10"  id="share-item"></div>	
-</div>
-<div class="menu_articulo right autor article_font">
-	<div class="right">			           	
-		<img src="img/user_orange.png"></img> 
-		<%= autor %> 
-	</div>
-	<div class="clear right">			         
-		<img src="img/clock_red.png"></img>
-		<span class="fecha">
-			<%= fecha  %>
-		</span>
-	</div> 
-</div>			  
-<div class="clear article_font"> 
-	<%= header %>
-	<br/>
-</div>	
+	<div class="menu_articulo right autor article_font">
+		<div class="right">			           	
+			<img src="img/user_orange.png"></img> 
+			<%= autor %> 
+		</div>
+		<div class="clear right">			         
+			<img src="img/clock_red.png"></img>
+			<span class="fecha">
+				<%= fecha  %>
+			</span>
+		</div> 
+	</div>			  
+	<div class="clear article_font"> 
+		<%= header %>
+		<br/>
+	</div>	
 </header>
 <section class='article_font'>
 	<%= section %>

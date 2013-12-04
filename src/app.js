@@ -30,6 +30,7 @@ var App = new (Backbone.Router.extend({
     //mediante bootstrapping :)
 	nelements = n
     this.entradasList = new EntradaList();
+    this.entradasList = new EntradaList();
     
     //lista filtrada que se usará para generar las vistas
     this.activeList = null;
@@ -105,6 +106,9 @@ var App = new (Backbone.Router.extend({
 	this.entradasList = this.activeList;
     var entradasView = new EntradaListaView({collection: this.activeList});
 
+    //limpiamos ui
+    $('#ui').empty();
+	
     //generamos vista
     $('#ui').html(_.template($('#searchTemplate').html(),
       //escape to prevent XSS attack
@@ -128,8 +132,6 @@ var App = new (Backbone.Router.extend({
     var entrada = new EntradaItem({id: id});
     var entradaView = new EntradaFichaView({model: entrada});
 
-    //limpiamos ui
-    $('#ui').empty();
 
     //añadimos vista ficha
     $('#app').html(entradaView.el);

@@ -133,8 +133,8 @@ var EntradaList = Backbone.Collection.extend({
 				EntradaItemAdd.set("fecha", json.solucion.fecha);
 				EntradaItemAdd.set("header", json.solucion.header);
 				EntradaItemAdd.set("imagen", json.solucion.imagen);
-				EntradaItemAdd.set("section", json.solucion.section['#data']);
-				EntradaItemAdd.set("footer", json.solucion.footer['#data']);
+				EntradaItemAdd.set("section", json.solucion.section['#cdata']);
+				EntradaItemAdd.set("footer", json.solucion.footer['#cdata']);
 				EntradaItemAdd.set("url_public", json.solucion.url_public);
 				collection.push(EntradaItemAdd, '');			
 			});
