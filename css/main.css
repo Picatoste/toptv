@@ -373,10 +373,10 @@ a:hover {
 
 .linkbox
 {
-	margin-top:30px;
+	/*margin-top:30px;*/
 	opacity: 1; 
-	width: 80px;
-	height: 80px;
+	width: 40px;
+	height: 40px;
 	cursor:pointer;
 	float: right;
 	display: inline-block;
@@ -667,7 +667,7 @@ a:hover {
    =============== */
 
     .wrapper {
-        /*width: 1026px;*/ /* 1140px - 10% for margins */
+        width: 1026px; /* 1140px - 10% for margins */
         margin: 0 auto;
     }
 }
