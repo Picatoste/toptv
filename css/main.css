@@ -77,7 +77,7 @@ textarea {
    ========================================================================== */
 
 body {
-    font: 14px/24px sans serif, Helvetica Neue, Arial;
+    font: 14px/24px 'quattrocento_sansregular', sans serif, Helvetica Neue, Arial;
     background:#f1f1f1 url(../img/pattern_gear2.png) repeat top left;
 }
 
@@ -369,7 +369,7 @@ a:hover {
 .subtitle {
 	clear:both;
 	float:left;
-	font-family: Helvetica;
+	font-family: quattrocento_sansregular;
 	/*font-size: 1.1em;*/
 	color: #FF5C0A;
 }
