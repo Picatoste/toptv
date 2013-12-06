@@ -114,6 +114,14 @@ body {
     font-weight: normal;
 }
 
+.title_header {
+    font-size:10px;
+    color: #FF5C0A;
+    font-family: 'square_pixel-7';
+    font-weight: normal;
+}
+
+
 .titulo_header{
 	border-bottom:1px dotted orange; 
 	padding-bottom:10px;
@@ -294,6 +302,18 @@ a:hover {
          url('galaxy-webfont.woff') format('woff'),
          url('galaxy-webfont.ttf') format('truetype'),
          url('galaxy-webfont.svg#galaxy_monkeyregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'square_pixel-7';
+    src: url('square_pixel-7.eot');
+    src: url('square_pixel-7.eot?#iefix') format('embedded-opentype'),
+         url('square_pixel-7.woff') format('woff'),
+         url('square_pixel-7.ttf') format('truetype'),
+         url('square_pixel-7.svg#square_pixel-7') format('svg');
     font-weight: normal;
     font-style: normal;
 
